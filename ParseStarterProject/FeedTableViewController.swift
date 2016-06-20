@@ -91,29 +91,21 @@ class FeedTableViewController: UITableViewController {
 
         let interval = round(NSDate().timeIntervalSinceDate(newDate))
         
-        let (_,m,_) = secondsToHoursMinutesSeconds(interval)
+        let (h,m,_) = secondsToHoursMinutesSeconds(interval)
         
-        if (round(m) > 60) {
+        print(h)
+        
+        if(h >= 1) {
             
-            let hours = round(m / 60)
-            let hoursAsInt = Int(hours)
+            self.time.append("\(Int(round(h))) hour ago.")
             
-            if(hoursAsInt > 1 ) {
-                
-                self.time.append("\(hoursAsInt) hours ago.")
-                
-            } else if(hoursAsInt == 1) {
-                
-                self.time.append("\(hoursAsInt) hour ago.")
-                
-            }
+        } else if(h >= 2) {
             
+            self.time.append("\(Int(round(h))) hours ago.")
             
-        } else {
+        } else if (h < 1) {
             
-            let minutesRounded = Int(m)
-
-            self.time.append("\(minutesRounded) minutes ago.")
+            self.time.append("\(Int(round(m))) minutes ago.")
             
         }
 
