@@ -167,17 +167,30 @@
                                             <nil key="highlightedColor"/>
                                             <size key="shadowOffset" width="0.0" height="0.0"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aB6-QL-TOh">
+                                            <rect key="frame" x="267" y="8" width="100" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="100" id="TJU-Cl-PVz"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="hki-99-CZt" firstAttribute="leading" secondItem="bYO-JE-cSc" secondAttribute="leading" id="1B4-6G-KDN"/>
                                         <constraint firstItem="bYO-JE-cSc" firstAttribute="leading" secondItem="GVJ-sd-OXF" secondAttribute="leadingMargin" id="4ga-NE-DCt"/>
+                                        <constraint firstItem="aB6-QL-TOh" firstAttribute="top" secondItem="bYO-JE-cSc" secondAttribute="top" id="ABs-9C-fWp"/>
+                                        <constraint firstItem="aB6-QL-TOh" firstAttribute="trailing" secondItem="GVJ-sd-OXF" secondAttribute="trailingMargin" id="Lsa-f3-Yi5"/>
                                         <constraint firstItem="hki-99-CZt" firstAttribute="top" secondItem="bYO-JE-cSc" secondAttribute="bottom" constant="2" id="VBl-Vf-f1F"/>
                                         <constraint firstItem="bYO-JE-cSc" firstAttribute="top" secondItem="GVJ-sd-OXF" secondAttribute="topMargin" id="cUX-Se-vUN"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="hki-99-CZt" secondAttribute="trailing" constant="89" id="rk7-OW-KXM"/>
+                                        <constraint firstItem="aB6-QL-TOh" firstAttribute="bottom" secondItem="bYO-JE-cSc" secondAttribute="bottom" id="yFv-si-6a4"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="message" destination="hki-99-CZt" id="kmP-L1-sgZ"/>
+                                    <outlet property="time" destination="aB6-QL-TOh" id="NNu-zK-VZr"/>
                                     <outlet property="username" destination="bYO-JE-cSc" id="4UJ-Xh-27F"/>
                                 </connections>
                             </tableViewCell>

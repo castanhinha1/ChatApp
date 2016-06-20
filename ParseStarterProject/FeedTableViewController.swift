@@ -14,11 +14,12 @@ class FeedTableViewController: UITableViewController {
     var messages = [String]()
     var usernames = [String]()
     var users = [String: String]()
+    var time = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var query = PFUser.query()
+        let query = PFUser.query()
         
         query?.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
             
@@ -27,6 +28,7 @@ class FeedTableViewController: UITableViewController {
                 self.messages.removeAll(keepCapacity: true)
                 self.users.removeAll(keepCapacity: true)
                 self.usernames.removeAll(keepCapacity: true)
+                self.time.removeAll(keepCapacity: true)
                 
                 for object in users {
                     
@@ -39,7 +41,7 @@ class FeedTableViewController: UITableViewController {
             }
         
 
-        var getFollowedUsersQuery = PFQuery(className: "followers")
+        let getFollowedUsersQuery = PFQuery(className: "followers")
         
         getFollowedUsersQuery.whereKey("follower", equalTo: PFUser.currentUser()!.objectId!)
         
@@ -49,9 +51,9 @@ class FeedTableViewController: UITableViewController {
                 
                 for object in objects {
                     
-                    var followedUser = object["following"] as! String
+                    let followedUser = object["following"] as! String
                     
-                    var query = PFQuery(className: "Message")
+                    let query = PFQuery(className: "Message")
                     
                     query.whereKey("userId", equalTo: followedUser)
                     
@@ -60,6 +62,8 @@ class FeedTableViewController: UITableViewController {
                         if let objects = objects {
                             
                             for object in objects {
+                                
+                                self.hoursSince(object.createdAt!)
                                 
                                 self.messages.append(object["message"] as! String)
                                 
@@ -81,6 +85,43 @@ class FeedTableViewController: UITableViewController {
     
         })
     
+    }
+    
+    func hoursSince(newDate: NSDate) {
+
+        let interval = round(NSDate().timeIntervalSinceDate(newDate))
+        
+        let (_,m,_) = secondsToHoursMinutesSeconds(interval)
+        
+        if (round(m) > 60) {
+            
+            let hours = round(m / 60)
+            let hoursAsInt = Int(hours)
+            
+            if(hoursAsInt > 1 ) {
+                
+                self.time.append("\(hoursAsInt) hours ago.")
+                
+            } else if(hoursAsInt == 1) {
+                
+                self.time.append("\(hoursAsInt) hour ago.")
+                
+            }
+            
+            
+        } else {
+            
+            let minutesRounded = Int(m)
+
+            self.time.append("\(minutesRounded) minutes ago.")
+            
+        }
+
+        
+    }
+    
+    func secondsToHoursMinutesSeconds (seconds : Double) -> (Double, Double, Double) {
+        return (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
     }
 
     override func didReceiveMemoryWarning() {
@@ -110,6 +151,8 @@ class FeedTableViewController: UITableViewController {
         myCell.username.text = usernames[indexPath.row]
         
         myCell.message.text = messages[indexPath.row]
+        
+        myCell.time.text = time[indexPath.row]
 
         return myCell
     }
