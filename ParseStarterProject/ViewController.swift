@@ -38,6 +38,8 @@ class ViewController: UIViewController {
         
     }
     
+    //Test
+    
     @IBAction func signUp(sender: AnyObject) {
         
         if username.text == "" || password.text == "" {
@@ -156,20 +158,19 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if PFUser.currentUser() != nil {
-            
-            self.performSegueWithIdentifier("login", sender: self)
-            
-            
-        }
+
         
            }
     
     override func viewDidAppear(animated: Bool) {
         
         
-        
+        if PFUser.currentUser()?.objectId != nil {
+            
+            self.performSegueWithIdentifier("login", sender: self)
+            
+            
+        }
         
     }
     

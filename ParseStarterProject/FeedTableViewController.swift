@@ -13,7 +13,6 @@ class FeedTableViewController: UITableViewController {
     
     var messages = [String]()
     var usernames = [String]()
-    var imageFiles = [PFFile]()
     var users = [String: String]()
 
     override func viewDidLoad() {
@@ -27,7 +26,6 @@ class FeedTableViewController: UITableViewController {
                 
                 self.messages.removeAll(keepCapacity: true)
                 self.users.removeAll(keepCapacity: true)
-                self.imageFiles.removeAll(keepCapacity: true)
                 self.usernames.removeAll(keepCapacity: true)
                 
                 for object in users {
@@ -53,7 +51,7 @@ class FeedTableViewController: UITableViewController {
                     
                     var followedUser = object["following"] as! String
                     
-                    var query = PFQuery(className: "Post")
+                    var query = PFQuery(className: "Message")
                     
                     query.whereKey("userId", equalTo: followedUser)
                     
@@ -64,8 +62,6 @@ class FeedTableViewController: UITableViewController {
                             for object in objects {
                                 
                                 self.messages.append(object["message"] as! String)
-                                
-                                self.imageFiles.append(object["imageFile"] as! PFFile)
                                 
                                 self.usernames.append(self.users[object["userId"] as! String]!)
                                 
@@ -109,17 +105,6 @@ class FeedTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let myCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! cell
-        
-        imageFiles[indexPath.row].getDataInBackgroundWithBlock { (data, error) -> Void in
-            
-            if let downloadedImage = UIImage(data: data!) {
-                
-                myCell.postedImage.image = downloadedImage
-                
-            }
-            
-        }
-        
         
         
         myCell.username.text = usernames[indexPath.row]

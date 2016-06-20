@@ -18,7 +18,7 @@ class TableViewController: UITableViewController {
     var refresher: UIRefreshControl!
     
     @IBAction func logout(sender: UIBarButtonItem) {
-        
+
         PFUser.logOut()
         let Login = storyboard!.instantiateViewControllerWithIdentifier("ViewController") as! UIViewController
         self.presentViewController(Login, animated: true, completion: nil)

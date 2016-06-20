@@ -27,6 +27,8 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Yik Yak wants to know your location to provide you with user feeds in your location</string>
 	<key>UILaunchStoryboardName</key>
 	<string>Main</string>
 	<key>UIMainStoryboardFile</key>
