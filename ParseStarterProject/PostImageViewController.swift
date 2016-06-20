@@ -52,6 +52,8 @@ class PostImageViewController: UIViewController, UINavigationControllerDelegate,
                 post["message"] = self.message.text
                 post["userId"] = PFUser.currentUser()!.objectId!
                 post["location"] = geopoint
+                let date = NSDate()
+                post["date"] = date
                 
                 post.saveInBackgroundWithBlock({ (success, error) in
                     
