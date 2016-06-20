@@ -57,6 +57,8 @@ class FeedTableViewController: UITableViewController {
                     
                     query.whereKey("userId", equalTo: followedUser)
                     
+                    query.addDescendingOrder("createdAt")
+                    
                     query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
                         
                         if let objects = objects {
@@ -92,8 +94,6 @@ class FeedTableViewController: UITableViewController {
         let interval = round(NSDate().timeIntervalSinceDate(newDate))
         
         let (h,m,_) = secondsToHoursMinutesSeconds(interval)
-        
-        print(h)
         
         if(h >= 1) {
             
