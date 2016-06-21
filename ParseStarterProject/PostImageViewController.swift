@@ -67,6 +67,12 @@ class PostImageViewController: UIViewController, UINavigationControllerDelegate,
                         
                         self.message.text = ""
                         
+                        //let Feed = self.storyboard!.instantiateViewControllerWithIdentifier("FeedTableViewController")
+                        
+                        //self.presentViewController(Feed, animated: true, completion: nil)
+                        
+                        
+                        
                     } else {
                         
                         self.displayAlert("Could not post image", message: "Please try again later")

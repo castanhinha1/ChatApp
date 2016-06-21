@@ -64,6 +64,13 @@ class FeedTableViewController: UITableViewController {
     }
     
     
+    @IBAction func signOut(sender: UIBarButtonItem) {
+        
+        PFUser.logOut()
+        let Login = storyboard!.instantiateViewControllerWithIdentifier("ViewController")
+        self.presentViewController(Login, animated: true, completion: nil)
+        
+    }
     
     func getFeed(isReload: Bool) {
         
@@ -177,11 +184,11 @@ class FeedTableViewController: UITableViewController {
         
         let (h,m,_) = secondsToHoursMinutesSeconds(interval)
         
-        if(h >= 1) {
+        if(round(h) == 1.0) {
             
             self.time.append("\(Int(round(h))) hour ago.")
             
-        } else if(h >= 2) {
+        } else if(h > 1) {
             
             self.time.append("\(Int(round(h))) hours ago.")
             
@@ -225,6 +232,8 @@ class FeedTableViewController: UITableViewController {
         myCell.username.text = usernames[indexPath.row]
         
         myCell.message.text = messages[indexPath.row]
+        
+        myCell.message.sizeToFit()
         
         myCell.time.text = time[indexPath.row]
 
