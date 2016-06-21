@@ -142,7 +142,7 @@
                                 <rect key="frame" x="0.0" y="86" width="375" height="91"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bV5-UQ-kjv" id="GVJ-sd-OXF">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="91"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="90.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYO-JE-cSc">
@@ -195,6 +195,13 @@
                             <outlet property="delegate" destination="0zI-2v-jFG" id="yEM-Tg-e7Y"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem title="Home" id="cbA-7E-RmE"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="MoZ-em-gGn"/>
+                        <barButtonItem systemItem="compose" id="fIE-GJ-dr1"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="upC-vB-PRN"/>
+                        <barButtonItem title="Settings" id="pLQ-ge-cvQ"/>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" id="XsI-Ox-QLq">
                         <barButtonItem key="leftBarButtonItem" title="Sign Out" id="4N9-zY-dBw">
                             <connections>
@@ -268,13 +275,17 @@
         <!--Navigation Controller-->
         <scene sceneID="HWd-Pa-UE7">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oHW-dU-Mjy" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="oHW-dU-Mjy" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="DAe-dj-r2o">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="PAu-3Z-DMz">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="0zI-2v-jFG" kind="relationship" relationship="rootViewController" id="Gve-hh-mGD"/>
                     </connections>
