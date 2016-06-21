@@ -138,33 +138,56 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="91" id="bV5-UQ-kjv" customClass="cell" customModule="ParseStarterProject" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="86" width="375" height="91"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="newMessageCell" rowHeight="50" id="bV5-UQ-kjv" customClass="newMessageCell" customModule="ParseStarterProject" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="86" width="375" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bV5-UQ-kjv" id="GVJ-sd-OXF">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="q9b-Vc-c5U">
+                                            <rect key="frame" x="8" y="11" width="359" height="30"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="q9b-Vc-c5U" firstAttribute="leading" secondItem="GVJ-sd-OXF" secondAttribute="leadingMargin" id="Ylh-tY-CLb"/>
+                                        <constraint firstItem="q9b-Vc-c5U" firstAttribute="trailing" secondItem="GVJ-sd-OXF" secondAttribute="trailingMargin" id="i83-Lh-C31"/>
+                                        <constraint firstItem="q9b-Vc-c5U" firstAttribute="top" secondItem="GVJ-sd-OXF" secondAttribute="topMargin" constant="3" id="u4R-JL-yJ2"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="messageTextField" destination="q9b-Vc-c5U" id="5VA-AD-Q2R"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="91" id="dFj-v4-frV" customClass="cell" customModule="ParseStarterProject" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="136" width="375" height="91"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dFj-v4-frV" id="Ikr-em-jPy">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="90.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYO-JE-cSc">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WsN-VZ-iJa">
                                             <rect key="frame" x="8" y="8" width="81" height="21"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="81" id="EdJ-PO-V7L"/>
+                                                <constraint firstAttribute="width" constant="81" id="twY-62-Fa7"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hki-99-CZt">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dbq-ef-jg6">
                                             <rect key="frame" x="8" y="31" width="328" height="60"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                             <size key="shadowOffset" width="0.0" height="0.0"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aB6-QL-TOh">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SHN-Rw-43P">
                                             <rect key="frame" x="267" y="8" width="100" height="21"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="100" id="TJU-Cl-PVz"/>
+                                                <constraint firstAttribute="width" constant="100" id="o5s-bA-Ehw"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -172,21 +195,21 @@
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="bYO-JE-cSc" firstAttribute="leading" secondItem="GVJ-sd-OXF" secondAttribute="leadingMargin" id="4ga-NE-DCt"/>
-                                        <constraint firstItem="hki-99-CZt" firstAttribute="top" secondItem="aB6-QL-TOh" secondAttribute="bottom" constant="2" id="9CZ-F5-aFQ"/>
-                                        <constraint firstItem="aB6-QL-TOh" firstAttribute="top" secondItem="bYO-JE-cSc" secondAttribute="top" id="ABs-9C-fWp"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="hki-99-CZt" secondAttribute="bottom" constant="-8.5" id="Dq8-G1-a1z"/>
-                                        <constraint firstItem="aB6-QL-TOh" firstAttribute="trailing" secondItem="GVJ-sd-OXF" secondAttribute="trailingMargin" id="Lsa-f3-Yi5"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="hki-99-CZt" secondAttribute="trailing" constant="31" id="NdF-zs-9kH"/>
-                                        <constraint firstItem="hki-99-CZt" firstAttribute="leading" secondItem="bYO-JE-cSc" secondAttribute="leading" id="Ult-Us-su6"/>
-                                        <constraint firstItem="bYO-JE-cSc" firstAttribute="top" secondItem="GVJ-sd-OXF" secondAttribute="topMargin" id="cUX-Se-vUN"/>
-                                        <constraint firstItem="aB6-QL-TOh" firstAttribute="bottom" secondItem="bYO-JE-cSc" secondAttribute="bottom" id="yFv-si-6a4"/>
+                                        <constraint firstItem="dbq-ef-jg6" firstAttribute="leading" secondItem="WsN-VZ-iJa" secondAttribute="leading" id="0PJ-CZ-xqp"/>
+                                        <constraint firstItem="SHN-Rw-43P" firstAttribute="trailing" secondItem="Ikr-em-jPy" secondAttribute="trailingMargin" id="1uw-Rq-2ME"/>
+                                        <constraint firstItem="WsN-VZ-iJa" firstAttribute="top" secondItem="Ikr-em-jPy" secondAttribute="topMargin" id="FPR-DE-1wQ"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="dbq-ef-jg6" secondAttribute="bottom" constant="-8.5" id="H4V-1T-lky"/>
+                                        <constraint firstItem="SHN-Rw-43P" firstAttribute="bottom" secondItem="WsN-VZ-iJa" secondAttribute="bottom" id="HWh-my-xsK"/>
+                                        <constraint firstItem="WsN-VZ-iJa" firstAttribute="leading" secondItem="Ikr-em-jPy" secondAttribute="leadingMargin" id="STC-R2-BIN"/>
+                                        <constraint firstItem="SHN-Rw-43P" firstAttribute="top" secondItem="WsN-VZ-iJa" secondAttribute="top" id="crT-3h-glU"/>
+                                        <constraint firstItem="dbq-ef-jg6" firstAttribute="top" secondItem="SHN-Rw-43P" secondAttribute="bottom" constant="2" id="fec-Wd-0wZ"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="dbq-ef-jg6" secondAttribute="trailing" constant="31" id="uMd-Kx-Pel"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="message" destination="hki-99-CZt" id="kmP-L1-sgZ"/>
-                                    <outlet property="time" destination="aB6-QL-TOh" id="NNu-zK-VZr"/>
-                                    <outlet property="username" destination="bYO-JE-cSc" id="4UJ-Xh-27F"/>
+                                    <outlet property="message" destination="dbq-ef-jg6" id="ASv-Kl-THs"/>
+                                    <outlet property="time" destination="SHN-Rw-43P" id="T9q-MC-5NS"/>
+                                    <outlet property="username" destination="WsN-VZ-iJa" id="mwy-0i-hbB"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -196,11 +219,24 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
-                        <barButtonItem title="Home" id="cbA-7E-RmE"/>
+                        <barButtonItem title="Home" id="cbA-7E-RmE">
+                            <connections>
+                                <action selector="homeButton:" destination="0zI-2v-jFG" id="T6G-by-RSU"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="MoZ-em-gGn"/>
-                        <barButtonItem systemItem="compose" id="fIE-GJ-dr1"/>
+                        <barButtonItem systemItem="compose" id="fIE-GJ-dr1">
+                            <connections>
+                                <action selector="composeButton:" destination="0zI-2v-jFG" id="NHK-ul-JBb"/>
+                                <segue destination="wOV-13-dzl" kind="show" id="bsM-cB-BuU"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="upC-vB-PRN"/>
-                        <barButtonItem title="Settings" id="pLQ-ge-cvQ"/>
+                        <barButtonItem title="Settings" id="pLQ-ge-cvQ">
+                            <connections>
+                                <action selector="settings:" destination="0zI-2v-jFG" id="FHF-xS-hh8"/>
+                            </connections>
+                        </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="XsI-Ox-QLq">
                         <barButtonItem key="leftBarButtonItem" title="Sign Out" id="4N9-zY-dBw">
@@ -295,4 +331,7 @@
             <point key="canvasLocation" x="1070.5" y="289.5"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="bsM-cB-BuU"/>
+    </inferredMetricsTieBreakers>
 </document>

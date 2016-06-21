@@ -17,7 +17,30 @@ class FeedTableViewController: UITableViewController {
     var time = [String]()
     
     var refresher: UIRefreshControl!
-
+    
+    @IBAction func settings(sender: UIBarButtonItem) {
+        
+        //Move to settings Page
+        print("settings button pressed")
+        
+        
+    }
+    
+    @IBAction func homeButton(sender: UIBarButtonItem) {
+        
+        //Move to home
+        print("homebutton pressed")
+        
+    }
+    
+    @IBAction func composeButton(sender: UIBarButtonItem) {
+        
+        //Move to compose
+        print("compose button pressed")
+        
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -221,23 +244,36 @@ class FeedTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return usernames.count
+        return usernames.count+1
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        if indexPath.row == 0 {
+            
+            let messageCell = tableView.dequeueReusableCellWithIdentifier("newMessageCell", forIndexPath: indexPath) as! newMessageCell
+            
+            return messageCell
+            
+        } else {
+        
         let myCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! cell
         
+        myCell.username.text = usernames[indexPath.row-1]
         
-        myCell.username.text = usernames[indexPath.row]
-        
-        myCell.message.text = messages[indexPath.row]
+        myCell.message.text = messages[indexPath.row-1]
         
         myCell.message.sizeToFit()
         
-        myCell.time.text = time[indexPath.row]
+        myCell.time.text = time[indexPath.row-1]
+            
+        //print(messages.count)
 
         return myCell
+            
+        }
+        
     }
     
 
