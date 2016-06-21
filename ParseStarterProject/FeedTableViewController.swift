@@ -21,7 +21,7 @@ class FeedTableViewController: UITableViewController {
         
         let query = PFUser.query()
         
-        query?.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
+        query?.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
             
             if let users = objects {
                 
@@ -39,54 +39,49 @@ class FeedTableViewController: UITableViewController {
                     }
                 }
             }
+            
+        }
         
-
-        let getFollowedUsersQuery = PFQuery(className: "followers")
+        getFeed()
+    }
+    
+    func getFeed() {
         
-        getFollowedUsersQuery.whereKey("follower", equalTo: PFUser.currentUser()!.objectId!)
-        
-        getFollowedUsersQuery.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
-        
-            if let objects = objects {
+        PFGeoPoint.geoPointForCurrentLocationInBackground { (geopoint, error) in
+            
+            if error == nil {
                 
-                for object in objects {
-                    
-                    let followedUser = object["following"] as! String
+                if let geoPoint = geopoint {
                     
                     let query = PFQuery(className: "Message")
-                    
-                    query.whereKey("userId", equalTo: followedUser)
-                    
+                    query.whereKey("location", nearGeoPoint: geoPoint, withinMiles: 30)
+                    query.limit = 100
                     query.addDescendingOrder("createdAt")
                     
-                    query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
+                    query.findObjectsInBackgroundWithBlock({ (objects, error) in
                         
                         if let objects = objects {
                             
                             for object in objects {
                                 
                                 self.hoursSince(object.createdAt!)
-                                
                                 self.messages.append(object["message"] as! String)
-                                
                                 self.usernames.append(self.users[object["userId"] as! String]!)
-                                
                                 self.tableView.reloadData()
-                            
+                                
                             }
                             
-                                                    }
-                        
+                        }
                         
                     })
+                    
+                    
                 }
                 
             }
             
         }
-    
-        })
-    
+        
     }
     
     func hoursSince(newDate: NSDate) {
