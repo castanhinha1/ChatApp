@@ -15,6 +15,8 @@ class FeedTableViewController: UITableViewController {
     var usernames = [String]()
     var users = [String: String]()
     var time = [String]()
+    
+    var refresher: UIRefreshControl!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,10 +44,30 @@ class FeedTableViewController: UITableViewController {
             
         }
         
-        getFeed()
+        getFeed(false)
+        
+        refresher = UIRefreshControl()
+        
+        refresher.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        
+        refresher.addTarget(self, action: #selector(FeedTableViewController.reloadData), forControlEvents: UIControlEvents.ValueChanged)
+        
+        self.tableView.addSubview(refresher)
+        
+        
     }
     
-    func getFeed() {
+    func reloadData() {
+        
+        getFeed(true)
+        
+    }
+    
+    
+    
+    func getFeed(isReload: Bool) {
+        
+        if isReload == false {
         
         PFGeoPoint.geoPointForCurrentLocationInBackground { (geopoint, error) in
             
@@ -63,6 +85,7 @@ class FeedTableViewController: UITableViewController {
                         if let objects = objects {
                             
                             for object in objects {
+                        
                                 
                                 self.hoursSince(object.createdAt!)
                                 self.messages.append(object["message"] as! String)
@@ -75,6 +98,70 @@ class FeedTableViewController: UITableViewController {
                         
                     })
                     
+                    
+                }
+                
+            }
+            
+        }
+            
+        } else if isReload == true {
+            
+            let query = PFUser.query()
+            
+            query?.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
+                
+                if let users = objects {
+                    
+                    self.messages.removeAll(keepCapacity: true)
+                    self.users.removeAll(keepCapacity: true)
+                    self.usernames.removeAll(keepCapacity: true)
+                    self.time.removeAll(keepCapacity: true)
+                    
+                    for object in users {
+                        
+                        if let user = object as? PFUser {
+                            
+                            self.users[user.objectId!] = user.username!
+                            
+                        }
+                    }
+                }
+                
+            }
+         
+            PFGeoPoint.geoPointForCurrentLocationInBackground { (geopoint, error) in
+                
+                if error == nil {
+                    
+                    if let geoPoint = geopoint {
+                        
+                        let query = PFQuery(className: "Message")
+                        query.whereKey("location", nearGeoPoint: geoPoint, withinMiles: 30)
+                        query.limit = 100
+                        query.addDescendingOrder("createdAt")
+                        
+                        query.findObjectsInBackgroundWithBlock({ (objects, error) in
+                            
+                            if let objects = objects {
+                                
+                                for object in objects {
+                                    
+                                    
+                                    self.hoursSince(object.createdAt!)
+                                    self.messages.append(object["message"] as! String)
+                                    self.usernames.append(self.users[object["userId"] as! String]!)
+                                    self.tableView.reloadData()
+                                    self.refresher.endRefreshing()
+                                    
+                                }
+                                
+                            }
+                            
+                        })
+                        
+                        
+                    }
                     
                 }
                 
