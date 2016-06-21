@@ -20,13 +20,13 @@ class TableViewController: UITableViewController {
     @IBAction func logout(sender: UIBarButtonItem) {
 
         PFUser.logOut()
-        let Login = storyboard!.instantiateViewControllerWithIdentifier("ViewController") as! UIViewController
+        let Login = storyboard!.instantiateViewControllerWithIdentifier("ViewController") 
         self.presentViewController(Login, animated: true, completion: nil)
         
     }
     func refresh() {
         
-        var query = PFUser.query()
+        let query = PFUser.query()
         
         query?.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
             
@@ -45,7 +45,7 @@ class TableViewController: UITableViewController {
                             self.usernames.append(user.username!)
                             self.userids.append(user.objectId!)
                             
-                            var query = PFQuery(className: "followers")
+                            let query = PFQuery(className: "followers")
                             
                             query.whereKey("follower", equalTo: PFUser.currentUser()!.objectId!)
                             query.whereKey("following", equalTo: user.objectId!)
@@ -104,7 +104,7 @@ class TableViewController: UITableViewController {
         
         refresher.attributedTitle = NSAttributedString(string: "Pull to refresh")
         
-        refresher.addTarget(self, action: "refresh", forControlEvents: UIControlEvents.ValueChanged)
+        refresher.addTarget(self, action: #selector(TableViewController.refresh), forControlEvents: UIControlEvents.ValueChanged)
         
         self.tableView.addSubview(refresher)
         
@@ -133,7 +133,7 @@ class TableViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
 
         cell.textLabel?.text = usernames[indexPath.row]
         
@@ -152,7 +152,7 @@ class TableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        var cell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
+        let cell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
         
         let followedObjectId = userids[indexPath.row]
         
@@ -162,7 +162,7 @@ class TableViewController: UITableViewController {
         
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
         
-            var following = PFObject(className: "followers")
+            let following = PFObject(className: "followers")
             following["following"] = userids[indexPath.row]
             following["follower"] = PFUser.currentUser()?.objectId
         
@@ -174,7 +174,7 @@ class TableViewController: UITableViewController {
             
             cell.accessoryType = UITableViewCellAccessoryType.None
             
-            var query = PFQuery(className: "followers")
+            let query = PFQuery(className: "followers")
             
             query.whereKey("follower", equalTo: PFUser.currentUser()!.objectId!)
             query.whereKey("following", equalTo: userids[indexPath.row])

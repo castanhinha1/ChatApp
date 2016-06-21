@@ -20,7 +20,6 @@
 		81BA817B1A49E0E500E65899 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817A1A49E0E500E65899 /* SystemConfiguration.framework */; };
 		81BA817F1A49E0F000E65899 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */; };
 		81BA81811A49E10C00E65899 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA81801A49E10C00E65899 /* ParseUI.framework */; };
-		97E473FB1D18246600F0E5A2 /* 315px-Blank_woman_placeholder.svg.png in Resources */ = {isa = PBXBuildFile; fileRef = 97E473FA1D18246600F0E5A2 /* 315px-Blank_woman_placeholder.svg.png */; };
 		C88C9AF51B4A95FA004CDDEA /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88C9AF41B4A95FA004CDDEA /* TableViewController.swift */; };
 		C88C9AF71B4A9764004CDDEA /* PostImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88C9AF61B4A9764004CDDEA /* PostImageViewController.swift */; };
 		C88C9AFA1B4A9861004CDDEA /* cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88C9AF81B4A9861004CDDEA /* cell.swift */; };
@@ -44,7 +43,6 @@
 		81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		81BA81801A49E10C00E65899 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		81BA81821A49E27F00E65899 /* ParseStarterProject-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ParseStarterProject-Bridging-Header.h"; sourceTree = "<group>"; };
-		97E473FA1D18246600F0E5A2 /* 315px-Blank_woman_placeholder.svg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "315px-Blank_woman_placeholder.svg.png"; sourceTree = "<group>"; };
 		C88C9AF41B4A95FA004CDDEA /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		C88C9AF61B4A9764004CDDEA /* PostImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostImageViewController.swift; sourceTree = "<group>"; };
 		C88C9AF81B4A9861004CDDEA /* cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cell.swift; sourceTree = "<group>"; };
@@ -93,7 +91,6 @@
 			children = (
 				81BA814A1A49DA1800E65899 /* AppDelegate.swift */,
 				81BA814C1A49DA1800E65899 /* ViewController.swift */,
-				97E473FA1D18246600F0E5A2 /* 315px-Blank_woman_placeholder.svg.png */,
 				81BA814E1A49DA1800E65899 /* Main.storyboard */,
 				C88C9AF81B4A9861004CDDEA /* cell.swift */,
 				C88C9AF91B4A9861004CDDEA /* FeedTableViewController.swift */,
@@ -200,7 +197,6 @@
 			files = (
 				81BA81501A49DA1800E65899 /* Main.storyboard in Resources */,
 				81BA81521A49DA1800E65899 /* Images.xcassets in Resources */,
-				97E473FB1D18246600F0E5A2 /* 315px-Blank_woman_placeholder.svg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
