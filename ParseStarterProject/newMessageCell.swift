@@ -12,5 +12,5 @@ class newMessageCell: UITableViewCell {
 
     @IBOutlet var messageTextField: UITextField!
 
-
+    
 }

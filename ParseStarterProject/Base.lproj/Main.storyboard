@@ -138,22 +138,37 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="newMessageCell" rowHeight="50" id="bV5-UQ-kjv" customClass="newMessageCell" customModule="ParseStarterProject" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="86" width="375" height="50"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="newMessageCell" rowHeight="60" id="bV5-UQ-kjv" customClass="newMessageCell" customModule="ParseStarterProject" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="86" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bV5-UQ-kjv" id="GVJ-sd-OXF">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="q9b-Vc-c5U">
-                                            <rect key="frame" x="8" y="11" width="359" height="30"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ivt-Xu-jGO">
+                                            <rect key="frame" x="321" y="34" width="46" height="28"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="46" id="qDn-k7-hd9"/>
+                                                <constraint firstAttribute="height" constant="28" id="uxZ-ZE-Ggy"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <state key="normal" title="Send"/>
+                                            <connections>
+                                                <action selector="sendNewMessage:" destination="0zI-2v-jFG" eventType="touchUpInside" id="38x-vg-4FD"/>
+                                            </connections>
+                                        </button>
+                                        <textField opaque="NO" clipsSubviews="YES" tag="200" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Message" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="q9b-Vc-c5U">
+                                            <rect key="frame" x="8" y="0.0" width="359" height="30"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="Ivt-Xu-jGO" firstAttribute="trailing" secondItem="q9b-Vc-c5U" secondAttribute="trailing" id="18g-83-Ubh"/>
                                         <constraint firstItem="q9b-Vc-c5U" firstAttribute="leading" secondItem="GVJ-sd-OXF" secondAttribute="leadingMargin" id="Ylh-tY-CLb"/>
+                                        <constraint firstItem="Ivt-Xu-jGO" firstAttribute="top" secondItem="q9b-Vc-c5U" secondAttribute="bottom" constant="4" id="bU4-ZK-7Hb"/>
                                         <constraint firstItem="q9b-Vc-c5U" firstAttribute="trailing" secondItem="GVJ-sd-OXF" secondAttribute="trailingMargin" id="i83-Lh-C31"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Ivt-Xu-jGO" secondAttribute="bottom" constant="-10.5" id="tjU-XS-Wy7"/>
                                         <constraint firstItem="q9b-Vc-c5U" firstAttribute="top" secondItem="GVJ-sd-OXF" secondAttribute="topMargin" constant="3" id="u4R-JL-yJ2"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -162,7 +177,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="91" id="dFj-v4-frV" customClass="cell" customModule="ParseStarterProject" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="136" width="375" height="91"/>
+                                <rect key="frame" x="0.0" y="146" width="375" height="91"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dFj-v4-frV" id="Ikr-em-jPy">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="90.5"/>
