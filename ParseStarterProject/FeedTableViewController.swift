@@ -121,6 +121,8 @@ class FeedTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.hidesBarsOnSwipe = true
+        
         self.hideKeyboardWhenTappedAround()
         
         let query = PFUser.query()
