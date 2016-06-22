@@ -78,6 +78,7 @@ class FeedTableViewController: UITableViewController {
                 let date = NSDate()
                 post["date"] = date
                 
+                if newMessage != nil {
                 
                 post.saveInBackgroundWithBlock({ (success, error) in
                     
@@ -103,7 +104,11 @@ class FeedTableViewController: UITableViewController {
                     
                 })
                 
-                
+                } else {
+                    
+                    selectedCell.sendButton.enabled = false
+                    
+                }
                 
             }
         }
@@ -154,9 +159,12 @@ class FeedTableViewController: UITableViewController {
         
     }
     
+
+    
     func reloadData() {
         
         getFeed(true)
+        tableView.reloadData()
         
     }
     
@@ -227,7 +235,6 @@ class FeedTableViewController: UITableViewController {
                         if let user = object as? PFUser {
                             
                             self.users[user.objectId!] = user.username!
-                            
                         }
                     }
                 }
@@ -264,16 +271,18 @@ class FeedTableViewController: UITableViewController {
                             
                         })
                         
-                        
                     }
                     
                 }
                 
             }
+         
+            
             
         }
         
     }
+    
     
     func hoursSince(newDate: NSDate) {
 
@@ -341,8 +350,6 @@ class FeedTableViewController: UITableViewController {
         myCell.message.sizeToFit()
         
         myCell.time.text = time[indexPath.row-1]
-            
-        //print(messages.count)
 
         return myCell
             

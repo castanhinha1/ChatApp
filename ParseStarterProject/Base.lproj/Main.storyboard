@@ -141,12 +141,16 @@
                             <tableViewCell autoresizesSubviews="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="newMessageCell" rowHeight="52" id="bV5-UQ-kjv" customClass="newMessageCell" customModule="ParseStarterProject" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="86" width="375" height="52"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bV5-UQ-kjv" id="GVJ-sd-OXF">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="bV5-UQ-kjv" id="GVJ-sd-OXF">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="51.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Message" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GpA-2z-eCS">
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Message" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GpA-2z-eCS">
                                             <rect key="frame" x="8" y="7" width="359" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="359" id="etU-lR-cga"/>
+                                                <constraint firstAttribute="height" constant="10" id="qLo-Rm-ziS"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
@@ -159,9 +163,15 @@
                                             </connections>
                                         </button>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="GpA-2z-eCS" secondAttribute="bottom" constant="14.5" id="2pB-WT-YJe"/>
+                                        <constraint firstItem="GpA-2z-eCS" firstAttribute="centerX" secondItem="GVJ-sd-OXF" secondAttribute="centerX" id="WfO-4g-p2T"/>
+                                        <constraint firstItem="GpA-2z-eCS" firstAttribute="top" secondItem="GVJ-sd-OXF" secondAttribute="top" constant="7" id="hrn-aS-vxf"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="newMessage" destination="GpA-2z-eCS" id="SAl-Qf-VkL"/>
+                                    <outlet property="sendButton" destination="Ivt-Xu-jGO" id="GfB-rn-dpo"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="91" id="dFj-v4-frV" customClass="cell" customModule="ParseStarterProject" customModuleProvider="target">
@@ -236,11 +246,17 @@
                         </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="XsI-Ox-QLq">
+                        <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" title="Sign Out" id="4N9-zY-dBw">
                             <connections>
                                 <action selector="signOut:" destination="0zI-2v-jFG" id="2ji-k3-gZA"/>
                             </connections>
                         </barButtonItem>
+                        <pageControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" id="FyX-am-Kgt">
+                            <rect key="frame" x="81" y="3.5" width="238" height="37"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="pageIndicatorTintColor" red="0.47843137250000001" green="0.69019607839999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </pageControl>
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="MTS-tz-0f6">
                             <connections>
                                 <action selector="composeMessage:" destination="0zI-2v-jFG" id="pAq-Sz-2az"/>
@@ -256,7 +272,7 @@
         <!--Navigation Controller-->
         <scene sceneID="HWd-Pa-UE7">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="oHW-dU-Mjy" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oHW-dU-Mjy" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="DAe-dj-r2o">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
