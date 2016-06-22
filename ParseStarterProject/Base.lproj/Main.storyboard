@@ -138,21 +138,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="newMessageCell" rowHeight="50" id="bV5-UQ-kjv" customClass="newMessageCell" customModule="ParseStarterProject" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="86" width="375" height="50"/>
+                            <tableViewCell autoresizesSubviews="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="newMessageCell" rowHeight="52" id="bV5-UQ-kjv" customClass="newMessageCell" customModule="ParseStarterProject" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="86" width="375" height="52"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bV5-UQ-kjv" id="GVJ-sd-OXF">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="51.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Message" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GpA-2z-eCS">
-                                            <rect key="frame" x="8" y="0.0" width="359" height="30"/>
+                                            <rect key="frame" x="8" y="7" width="359" height="30"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ivt-Xu-jGO">
-                                            <rect key="frame" x="321" y="26" width="46" height="28"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <rect key="frame" x="321" y="28.5" width="46" height="33"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <state key="normal" title="Send"/>
                                             <connections>
                                                 <action selector="sendNewMessage:" destination="0zI-2v-jFG" eventType="touchUpInside" id="38x-vg-4FD"/>
@@ -165,7 +165,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="91" id="dFj-v4-frV" customClass="cell" customModule="ParseStarterProject" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="136" width="375" height="91"/>
+                                <rect key="frame" x="0.0" y="138" width="375" height="91"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dFj-v4-frV" id="Ikr-em-jPy">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="90.5"/>
@@ -228,12 +228,6 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="MoZ-em-gGn"/>
-                        <barButtonItem systemItem="compose" id="fIE-GJ-dr1">
-                            <connections>
-                                <action selector="composeButton:" destination="0zI-2v-jFG" id="NHK-ul-JBb"/>
-                                <segue destination="wOV-13-dzl" kind="show" id="bsM-cB-BuU"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="upC-vB-PRN"/>
                         <barButtonItem title="Settings" id="pLQ-ge-cvQ">
                             <connections>
@@ -247,9 +241,9 @@
                                 <action selector="signOut:" destination="0zI-2v-jFG" id="2ji-k3-gZA"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="k3y-LZ-CXa">
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="MTS-tz-0f6">
                             <connections>
-                                <segue destination="wOV-13-dzl" kind="show" id="M7D-tg-YJs"/>
+                                <action selector="composeMessage:" destination="0zI-2v-jFG" id="pAq-Sz-2az"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -258,58 +252,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a6B-gc-Yli" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1573.5" y="289.5"/>
-        </scene>
-        <!--Post Image-->
-        <scene sceneID="CEN-fx-Rsc">
-            <objects>
-                <viewController title="Post Image" id="wOV-13-dzl" customClass="PostImageViewController" customModule="ParseStarterProject" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="7HU-Bd-g9T"/>
-                        <viewControllerLayoutGuide type="bottom" id="bcP-iP-mqL"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Ljn-Np-1ad">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xf6-qD-uzN">
-                                <rect key="frame" x="16" y="88" width="343" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QYa-iN-gxp">
-                                <rect key="frame" x="130" y="139" width="115" height="36"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="115" id="VO5-24-R5C"/>
-                                    <constraint firstAttribute="height" constant="36" id="q0x-51-s0F"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Post">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="postImage:" destination="wOV-13-dzl" eventType="touchUpInside" id="Icr-h2-kst"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="QYa-iN-gxp" firstAttribute="top" secondItem="xf6-qD-uzN" secondAttribute="bottom" constant="21" id="1OD-hV-mNw"/>
-                            <constraint firstItem="xf6-qD-uzN" firstAttribute="leading" secondItem="Ljn-Np-1ad" secondAttribute="leadingMargin" id="1cU-f6-XB1"/>
-                            <constraint firstItem="xf6-qD-uzN" firstAttribute="top" secondItem="7HU-Bd-g9T" secondAttribute="bottom" constant="24" id="LKf-3J-Wto"/>
-                            <constraint firstItem="xf6-qD-uzN" firstAttribute="trailing" secondItem="Ljn-Np-1ad" secondAttribute="trailingMargin" id="Xoa-G1-rBe"/>
-                            <constraint firstItem="QYa-iN-gxp" firstAttribute="centerX" secondItem="xf6-qD-uzN" secondAttribute="centerX" id="lzw-Ri-f9C"/>
-                        </constraints>
-                    </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <connections>
-                        <outlet property="message" destination="xf6-qD-uzN" id="e0q-Uz-Ya0"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="u8R-A5-gAq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2075.5" y="289.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="HWd-Pa-UE7">
@@ -334,7 +276,4 @@
             <point key="canvasLocation" x="1070.5" y="289.5"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="bsM-cB-BuU"/>
-    </inferredMetricsTieBreakers>
 </document>

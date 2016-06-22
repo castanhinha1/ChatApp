@@ -20,6 +20,11 @@ class FeedTableViewController: UITableViewController {
     var refresher: UIRefreshControl!
     var activityIndicator = UIActivityIndicatorView()
     
+    @IBAction func composeMessage(sender: UIBarButtonItem) {
+
+        tableView.setContentOffset(CGPointZero, animated: true)
+        
+    }
     
     @IBAction func settings(sender: UIBarButtonItem) {
         
@@ -73,6 +78,7 @@ class FeedTableViewController: UITableViewController {
                 let date = NSDate()
                 post["date"] = date
                 
+                
                 post.saveInBackgroundWithBlock({ (success, error) in
                     
                     self.activityIndicator.stopAnimating()
@@ -81,7 +87,7 @@ class FeedTableViewController: UITableViewController {
                     
                     if error == nil {
                         
-                        self.displayAlert("Success!", message: "Posted!")
+                        //self.displayAlert("Success!", message: "Posted!")
                         
                         selectedCell.newMessage.text = ""
                         
