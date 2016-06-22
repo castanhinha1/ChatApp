@@ -48,6 +48,11 @@ class FeedTableViewController: UITableViewController {
         
     }
     
+    @IBAction func composeNewMessage(sender: UIBarButtonItem) {
+        
+        self.tableView.contentOffset = CGPointMake(0, 0 - self.tableView.contentInset.top);
+        
+    }
     @IBAction func sendNewMessage(sender: AnyObject) {
         
         let indexPath = NSIndexPath(forRow: 0, inSection: 0) // This defines what indexPath is which is used later to define a cell
@@ -121,7 +126,7 @@ class FeedTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.hidesBarsOnSwipe = true
+        self.navigationController?.toolbar.hidden = false
         
         self.hideKeyboardWhenTappedAround()
         
@@ -162,6 +167,13 @@ class FeedTableViewController: UITableViewController {
     }
     
 
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.navigationController!.hidesBarsOnSwipe = true
+        
+        
+    }
     
     func reloadData() {
         

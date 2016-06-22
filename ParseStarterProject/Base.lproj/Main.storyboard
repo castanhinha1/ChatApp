@@ -233,13 +233,21 @@
                     </tableView>
                     <toolbarItems>
                         <barButtonItem title="Home" id="cbA-7E-RmE">
+                            <color key="tintColor" red="1" green="0.10709056860000001" blue="0.20940426200000001" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="homeButton:" destination="0zI-2v-jFG" id="T6G-by-RSU"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="MoZ-em-gGn"/>
+                        <barButtonItem systemItem="compose" id="TUX-Vy-nvW">
+                            <color key="tintColor" red="1" green="0.10709056855456778" blue="0.2094042620190355" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="composeNewMessage:" destination="0zI-2v-jFG" id="6b4-qJ-Ryk"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="upC-vB-PRN"/>
                         <barButtonItem title="Settings" id="pLQ-ge-cvQ">
+                            <color key="tintColor" red="1" green="0.10709056860000001" blue="0.20940426200000001" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="settings:" destination="0zI-2v-jFG" id="FHF-xS-hh8"/>
                             </connections>
@@ -274,12 +282,12 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oHW-dU-Mjy" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DAe-dj-r2o">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" restorationIdentifier="navigationBar" id="DAe-dj-r2o">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="PAu-3Z-DMz">
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" restorationIdentifier="toolbar" id="PAu-3Z-DMz">
                         <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
