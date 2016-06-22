@@ -10,7 +10,6 @@ import UIKit
 
 class newMessageCell: UITableViewCell {
 
-    @IBOutlet var messageTextField: UITextField!
-
+    @IBOutlet var newMessage: UITextField!
     
 }

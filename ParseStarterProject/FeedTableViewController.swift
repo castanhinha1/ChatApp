@@ -15,6 +15,7 @@ class FeedTableViewController: UITableViewController {
     var usernames = [String]()
     var users = [String: String]()
     var time = [String]()
+    var newMessage: String = ""
     
     var refresher: UIRefreshControl!
     var activityIndicator = UIActivityIndicatorView()
@@ -44,9 +45,65 @@ class FeedTableViewController: UITableViewController {
     
     @IBAction func sendNewMessage(sender: AnyObject) {
         
-        let messageCell = tableView.dequeueReusableCellWithIdentifier("newMessageCell") as! newMessageCell
+        let indexPath = NSIndexPath(forRow: 0, inSection: 0) // This defines what indexPath is which is used later to define a cell
+        let selectedCell = tableView.cellForRowAtIndexPath(indexPath) as! newMessageCell
         
-        print(messageCell.messageTextField.text!)
+        let newMessage = selectedCell.newMessage.text //textFied is your textfield name.
+        
+        // Send "newMessage" to parse and update table view
+        
+        activityIndicator = UIActivityIndicatorView(frame: self.view.frame)
+        activityIndicator.backgroundColor = UIColor(white: 1.0, alpha: 0.5)
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+        view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+        
+        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+        
+        PFGeoPoint.geoPointForCurrentLocationInBackground { (geopoint, error) in
+            
+            if let geopoint = geopoint {
+                
+                let post = PFObject(className: "Message")
+                post["message"] = newMessage
+                post["userId"] = PFUser.currentUser()!.objectId!
+                post["location"] = geopoint
+                let date = NSDate()
+                post["date"] = date
+                
+                post.saveInBackgroundWithBlock({ (success, error) in
+                    
+                    self.activityIndicator.stopAnimating()
+                    
+                    UIApplication.sharedApplication().endIgnoringInteractionEvents()
+                    
+                    if error == nil {
+                        
+                        self.displayAlert("Success!", message: "Posted!")
+                        
+                        selectedCell.newMessage.text = ""
+                        
+                        self.reloadData()
+                        
+                        
+                    } else {
+                        
+                        self.displayAlert("Could not post image", message: "Please try again later")
+                        
+                    }
+                    
+                    
+                })
+                
+                
+                
+            }
+        }
+
+        
+        
         
     }
     
@@ -300,9 +357,11 @@ class FeedTableViewController: UITableViewController {
         
         
     }
-    
+ 
     
 }
+
+
 
     extension UIViewController {
         func hideKeyboardWhenTappedAround() {
