@@ -308,9 +308,41 @@ class FeedTableViewController: UITableViewController, UITextFieldDelegate {
             
             self.time.append("\(Int(round(h))) hour ago.")
             
-        } else if(h > 1) {
+        } else if(h > 1 && h < 24) {
             
             self.time.append("\(Int(round(h))) hours ago.")
+            
+        } else if(h > 24 && h < 48) {
+        
+            self.time.append("1 day ago.")
+            
+        } else if(h > 48 && h < 72) {
+          
+            self.time.append("2 days ago.")
+            
+        } else if(h > 72 && h < 96) {
+            
+            self.time.append("3 days ago.")
+            
+        } else if(h > 96 && h < 120) {
+            
+            self.time.append("4 days ago.")
+            
+        } else if(h > 120 && h < 144) {
+            
+            self.time.append("5 days ago.")
+            
+        } else if(h > 144 && h < 168) {
+            
+            self.time.append("6 days ago.")
+            
+        } else if(h > 168 && h < 192) {
+            
+            self.time.append("1 week ago.")
+            
+        } else if(h > 384) {
+            
+            self.time.append("A Few Weeks ago.")
             
         } else if (h < 1) {
             
