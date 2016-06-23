@@ -9,13 +9,14 @@
 import UIKit
 import Parse
 
-class FeedTableViewController: UITableViewController {
+class FeedTableViewController: UITableViewController, UITextFieldDelegate {
     
     var messages = [String]()
     var usernames = [String]()
     var users = [String: String]()
     var time = [String]()
     var newMessage: String = ""
+    var messageCell: newMessageCell?
     
     var refresher: UIRefreshControl!
     var activityIndicator = UIActivityIndicatorView()
@@ -56,7 +57,9 @@ class FeedTableViewController: UITableViewController {
     @IBAction func sendNewMessage(sender: AnyObject) {
         
         let indexPath = NSIndexPath(forRow: 0, inSection: 0) // This defines what indexPath is which is used later to define a cell
+        
         let selectedCell = tableView.cellForRowAtIndexPath(indexPath) as! newMessageCell
+        
         
         let newMessage = selectedCell.newMessage.text //textFied is your textfield name.
         
@@ -93,11 +96,10 @@ class FeedTableViewController: UITableViewController {
                     
                     if error == nil {
                         
-                        //self.displayAlert("Success!", message: "Posted!")
-                        
                         selectedCell.newMessage.text = ""
                         
-                        self.reloadData()
+                        self.getFeed(true)
+                        
                         
                         
                     } else {
@@ -111,7 +113,7 @@ class FeedTableViewController: UITableViewController {
                 
                 } else {
                     
-                    selectedCell.sendButton.enabled = false
+                    self.messageCell!.sendButton.enabled = false
                     
                 }
                 
@@ -126,9 +128,9 @@ class FeedTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.toolbar.hidden = false
         
-        self.hideKeyboardWhenTappedAround()
+        
+        self.navigationController?.toolbar.hidden = false
         
         let query = PFUser.query()
         
@@ -155,16 +157,9 @@ class FeedTableViewController: UITableViewController {
         
         getFeed(false)
         
-        refresher = UIRefreshControl()
-        
-        refresher.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        
-        refresher.addTarget(self, action: #selector(FeedTableViewController.reloadData), forControlEvents: UIControlEvents.ValueChanged)
-        
-        self.tableView.addSubview(refresher)
-        
-        
+        self.refreshControl?.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
     }
+    
     
 
     override func viewDidAppear(animated: Bool) {
@@ -172,13 +167,17 @@ class FeedTableViewController: UITableViewController {
         
         self.navigationController!.hidesBarsOnSwipe = true
         
+        //self.hideKeyboardWhenTappedAround()
+        
         
     }
     
-    func reloadData() {
+    
+    func handleRefresh(refreshControl: UIRefreshControl) {
         
         getFeed(true)
-        tableView.reloadData()
+        
+        
         
     }
     
@@ -277,7 +276,8 @@ class FeedTableViewController: UITableViewController {
                                     self.messages.append(object["message"] as! String)
                                     self.usernames.append(self.users[object["userId"] as! String]!)
                                     self.tableView.reloadData()
-                                    self.refresher.endRefreshing()
+                                    self.refreshControl!.endRefreshing()
+                                    
                                     
                                 }
                                 
@@ -349,9 +349,11 @@ class FeedTableViewController: UITableViewController {
         
         if indexPath.row == 0 {
             
-            let messageCell = tableView.dequeueReusableCellWithIdentifier("newMessageCell", forIndexPath: indexPath) as! newMessageCell
+            messageCell = tableView.dequeueReusableCellWithIdentifier("newMessageCell", forIndexPath: indexPath) as? newMessageCell
             
-            return messageCell
+            messageCell!.newMessage.delegate = self
+            
+            return messageCell!
             
         } else {
         
@@ -371,6 +373,12 @@ class FeedTableViewController: UITableViewController {
         
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        performSegueWithIdentifier("showDetail", sender: indexPath.row)
+        
+    }
+    
     func displayAlert(title: String, message: String) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
@@ -385,6 +393,34 @@ class FeedTableViewController: UITableViewController {
         
     }
  
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        
+        tableView.allowsSelection = false
+        
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        
+        tableView.allowsSelection = true
+        
+    }
+    
+    /**
+     * Called when 'return' key pressed. return NO to ignore.
+     */
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    
+    /**
+     * Called when the user click on the view (outside the UITextField).
+     */
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     
 }
 
