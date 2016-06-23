@@ -1,9 +1,3 @@
-//
-//  ViewController.swift
-//
-//  Copyright 2011-present Parse Inc. All rights reserved.
-//
-
 import UIKit
 import Parse
 

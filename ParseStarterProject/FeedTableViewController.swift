@@ -1,10 +1,4 @@
-//
-//  FeedTableViewController.swift
-//  ParseStarterProject
-//
-//  Created by Rob Percival on 19/05/2015.
-//  Copyright (c) 2015 Parse. All rights reserved.
-//
+
 
 import UIKit
 import Parse
@@ -23,7 +17,7 @@ class FeedTableViewController: UITableViewController, UITextFieldDelegate {
     
     @IBAction func composeMessage(sender: UIBarButtonItem) {
 
-        tableView.setContentOffset(CGPointZero, animated: true)
+        self.tableView.contentOffset = CGPointMake(0, 0 - self.tableView.contentInset.top);
         
     }
     
@@ -128,10 +122,6 @@ class FeedTableViewController: UITableViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
-        self.navigationController?.toolbar.hidden = false
-        
         let query = PFUser.query()
         
         query?.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
@@ -164,11 +154,7 @@ class FeedTableViewController: UITableViewController, UITextFieldDelegate {
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
-        self.navigationController!.hidesBarsOnSwipe = true
-        
-        //self.hideKeyboardWhenTappedAround()
-        
+
         
     }
     
@@ -452,6 +438,7 @@ class FeedTableViewController: UITableViewController, UITextFieldDelegate {
      */
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
+        
     }
     
 }

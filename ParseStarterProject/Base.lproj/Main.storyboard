@@ -260,11 +260,6 @@
                                 <action selector="signOut:" destination="0zI-2v-jFG" id="2ji-k3-gZA"/>
                             </connections>
                         </barButtonItem>
-                        <pageControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" id="FyX-am-Kgt">
-                            <rect key="frame" x="81" y="3.5" width="238" height="37"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="pageIndicatorTintColor" red="0.47843137250000001" green="0.69019607839999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        </pageControl>
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="MTS-tz-0f6">
                             <connections>
                                 <action selector="composeMessage:" destination="0zI-2v-jFG" id="pAq-Sz-2az"/>
@@ -315,7 +310,7 @@
         <!--Navigation Controller-->
         <scene sceneID="HWd-Pa-UE7">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oHW-dU-Mjy" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="oHW-dU-Mjy" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" restorationIdentifier="navigationBar" id="DAe-dj-r2o">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
