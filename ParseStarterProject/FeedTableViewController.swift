@@ -5,6 +5,7 @@ import Parse
 
 class FeedTableViewController: UITableViewController, UITextFieldDelegate {
     
+    var messageID = [String]()
     var messages = [String]()
     var usernames = [String]()
     var users = [String: String]()
@@ -128,6 +129,7 @@ class FeedTableViewController: UITableViewController, UITextFieldDelegate {
             
             if let users = objects {
                 
+                self.messageID.removeAll(keepCapacity: true)
                 self.messages.removeAll(keepCapacity: true)
                 self.users.removeAll(keepCapacity: true)
                 self.usernames.removeAll(keepCapacity: true)
@@ -199,11 +201,16 @@ class FeedTableViewController: UITableViewController, UITextFieldDelegate {
                         
                                 
                                 self.hoursSince(object.createdAt!)
+                                self.messageID.append(object.objectId!)
                                 self.messages.append(object["message"] as! String)
                                 self.usernames.append(self.users[object["userId"] as! String]!)
                                 self.tableView.reloadData()
                                 
                             }
+                            
+                        } else {
+                            
+                            print(error)
                             
                         }
                         
@@ -224,6 +231,7 @@ class FeedTableViewController: UITableViewController, UITextFieldDelegate {
                 
                 if let users = objects {
                     
+                    self.messageID.removeAll(keepCapacity: true)
                     self.messages.removeAll(keepCapacity: true)
                     self.users.removeAll(keepCapacity: true)
                     self.usernames.removeAll(keepCapacity: true)
@@ -259,6 +267,7 @@ class FeedTableViewController: UITableViewController, UITextFieldDelegate {
                                     
                                     
                                     self.hoursSince(object.createdAt!)
+                                    self.messageID.append(object.objectId!)
                                     self.messages.append(object["message"] as! String)
                                     self.usernames.append(self.users[object["userId"] as! String]!)
                                     self.tableView.reloadData()
@@ -391,11 +400,35 @@ class FeedTableViewController: UITableViewController, UITextFieldDelegate {
         
     }
     
+    var valueToPass:String = ""
+    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        performSegueWithIdentifier("showDetail", sender: indexPath.row)
+        let indexPath = tableView.indexPathForSelectedRow!;
+        
+        valueToPass = messageID[indexPath.row-1]
+        
+        performSegueWithIdentifier("showDetail", sender: self)
+        
         
     }
+    
+    
+    
+    // Navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        // Commments View Controller
+        if segue.identifier == "showDetail" {
+            
+            let vc = segue.destinationViewController as! CommentsTableViewController
+            
+            vc.messageId = valueToPass
+            
+        }
+    }
+ 
+ 
     
     func displayAlert(title: String, message: String) {
         
