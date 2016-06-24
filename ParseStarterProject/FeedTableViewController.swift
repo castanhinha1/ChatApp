@@ -341,8 +341,17 @@ class FeedTableViewController: UITableViewController, UITextFieldDelegate {
             
         } else if (h < 1) {
             
+            if (round(m) <= 0) {
+                
+                self.time.append("1 minute ago.")
+                
+            } else {
+            
             self.time.append("\(Int(round(m))) minutes ago.")
             
+                //print(round(m))
+                
+            }
         }
 
         

@@ -21,14 +21,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Parse.enableLocalDatastore()
         
-        let parseConfiguration = ParseClientConfiguration(block: { (ParseMutableClientConfiguration) -> Void in
-            ParseMutableClientConfiguration.applicationId = "dfhdfgh345465436543"
-            ParseMutableClientConfiguration.clientKey = "hhrgh3enrgh5634"
-            ParseMutableClientConfiguration.server = "https://instagram5579.herokuapp.com/parse"
-        })
-        
-        
-        Parse.initializeWithConfiguration(parseConfiguration)
+        let configuration = ParseClientConfiguration {
+            $0.applicationId = "vBoGwln0iFEyIzEMyInXH3GIIuNMBM1CDkdM2UnL"
+            $0.clientKey = "CyjkO5ZF4CiZONHthZkbOBtfkA9OV1zJp6zJGZfs"
+            $0.server = "https://parseapi.back4app.com"
+        }
+        Parse.initializeWithConfiguration(configuration)
         
         PFUser.enableAutomaticUser()
         
