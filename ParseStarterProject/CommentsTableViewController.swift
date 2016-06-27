@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Parse
+
 
 class CommentsTableViewController: UITableViewController {
     
@@ -25,7 +27,30 @@ class CommentsTableViewController: UITableViewController {
         
         
     }
+    @IBOutlet weak var newComment: UIBarButtonItem!
 
+    @IBAction func newComment(sender: UIBarButtonItem) {
+        
+        let comment = PFObject(className:"Comment")
+        comment["createdBy"] = PFUser.currentUser()
+        comment["messageId"] = messageId
+
+        comment.saveInBackgroundWithBlock({ (success, error) in
+            
+            if error == nil {
+                
+                print("Comment Saved")
+                
+            } else {
+                
+                print("Comment did not save")
+                
+            }
+            
+            
+        })
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
