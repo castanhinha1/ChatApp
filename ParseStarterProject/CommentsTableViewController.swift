@@ -12,21 +12,59 @@ import Parse
 
 class CommentsTableViewController: UITableViewController {
     
-    var messageId: String? {
-        didSet {
-            
-            print(messageId)
-            
-        }
+    var messages = [String]()
+    var commentSender = [String]()
+    var commentTime = [String]()
+    
+    
+    var originalMessage: String = ""
+    var originalSender: String = ""
+    var originalTime: String = ""
+    var messageId: String?
+    
+    
+    func loadComments() {
         
+        messages.removeAll()
+        commentSender.removeAll()
+        commentTime.removeAll()
+        
+        let query = PFQuery(className: "Comment")
+        query.whereKey("messageId", equalTo: messageId!)
+        query.limit = 100
+        query.addDescendingOrder("createdAt")
+        
+        query.findObjectsInBackgroundWithBlock { (objects, error) in
+            
+            if let objects = objects {
+                
+                for object in objects {
+                    
+                    //Add Comments to Array
+                    
+                    print("Success")
+                    
+                    self.messages.append(object["message"] as! String)
+                    
+                    self.commentSender.append((PFUser.currentUser()?.objectForKey("username"))! as! String)
+                    
+                    self.tableView.reloadData()
+                    
+                    
+                    
+                }
+                
+            } else {
+                
+                print(error)
+                
+            }
+
+        
+        }
         
     }
     
-    func postMessage() {
-        
-        
-        
-    }
     @IBOutlet weak var newComment: UIBarButtonItem!
 
     @IBAction func newComment(sender: UIBarButtonItem) {
@@ -34,6 +72,7 @@ class CommentsTableViewController: UITableViewController {
         let comment = PFObject(className:"Comment")
         comment["createdBy"] = PFUser.currentUser()
         comment["messageId"] = messageId
+        comment["message"] = "this is a test"
 
         comment.saveInBackgroundWithBlock({ (success, error) in
             
@@ -49,16 +88,18 @@ class CommentsTableViewController: UITableViewController {
             
             
         })
+        loadComments()
+        self.tableView.reloadData()
         
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        let nib = UINib(nibName: "TableSectionFooter", bundle: nil)
+        tableView.registerNib(nib, forHeaderFooterViewReuseIdentifier: "TableSectionFooter")
+        
+        loadComments()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -70,67 +111,49 @@ class CommentsTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return messages.count+1
     }
 
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
 
-        // Configure the cell...
-
-        return cell
+        if indexPath.row == 0 {
+            
+            let messageCell = tableView.dequeueReusableCellWithIdentifier("message", forIndexPath: indexPath) as? message
+            
+            messageCell?.user.text = originalSender
+            messageCell?.originalMessage.text = originalMessage
+            messageCell?.time.text = originalTime
+            
+            return messageCell!
+            
+        } else {
+        
+            let commentCell = tableView.dequeueReusableCellWithIdentifier("comment", forIndexPath: indexPath) as! comment
+            
+            commentCell.comment.text = messages[indexPath.row-1]
+            commentCell.User.text = commentSender[indexPath.row-1]
+            commentCell.time.text = "12"
+            
+            return commentCell
+            
+        }
+        
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerCell = tableView.dequeueReusableCellWithIdentifier("TableSectionFooter") as! TableSectionFooter
+        footerCell.backgroundColor = UIColor.cyanColor()
+        
+        
+        return footerCell
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
+    
 
 }

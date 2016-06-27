@@ -409,13 +409,20 @@ class FeedTableViewController: UITableViewController, UITextFieldDelegate {
         
     }
     
-    var valueToPass:String = ""
+    var valueToPassMessageId:String = ""
+    var valueToPassUsername:String = ""
+    var valueToPassTime:String = ""
+    var valueToPassMessage:String = ""
+
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         let indexPath = tableView.indexPathForSelectedRow!;
         
-        valueToPass = messageID[indexPath.row-1]
+        valueToPassMessageId = messageID[indexPath.row-1]
+        valueToPassUsername = usernames[indexPath.row-1]
+        valueToPassTime = time[indexPath.row-1]
+        valueToPassMessage = messages[indexPath.row-1]
         
         performSegueWithIdentifier("showDetail", sender: self)
         
@@ -432,7 +439,11 @@ class FeedTableViewController: UITableViewController, UITextFieldDelegate {
             
             let vc = segue.destinationViewController as! CommentsTableViewController
             
-            vc.messageId = valueToPass
+            vc.messageId = valueToPassMessageId
+            vc.originalMessage = valueToPassMessage
+            vc.originalSender = valueToPassUsername
+            vc.originalTime = valueToPassTime
+            
             
         }
     }

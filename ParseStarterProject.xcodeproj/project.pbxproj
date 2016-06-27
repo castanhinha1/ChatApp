@@ -20,9 +20,12 @@
 		81BA817B1A49E0E500E65899 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817A1A49E0E500E65899 /* SystemConfiguration.framework */; };
 		81BA817F1A49E0F000E65899 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */; };
 		81BA81811A49E10C00E65899 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA81801A49E10C00E65899 /* ParseUI.framework */; };
+		9749CB5B1D2150EA00DD4278 /* message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9749CB5A1D2150EA00DD4278 /* message.swift */; };
+		9749CB5D1D2150F700DD4278 /* comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9749CB5C1D2150F700DD4278 /* comment.swift */; };
+		9749CB5F1D21758300DD4278 /* TableSectionFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9749CB5E1D21758300DD4278 /* TableSectionFooter.swift */; };
+		9749CB611D2175C000DD4278 /* Footer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9749CB601D2175C000DD4278 /* Footer.xib */; };
 		97B10CD01D1C7EC800CC6943 /* CommentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B10CCF1D1C7EC800CC6943 /* CommentsTableViewController.swift */; };
 		97D1861A1D19A50300D4E505 /* newMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D186191D19A50300D4E505 /* newMessageCell.swift */; };
-		C88C9AF51B4A95FA004CDDEA /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88C9AF41B4A95FA004CDDEA /* TableViewController.swift */; };
 		C88C9AFA1B4A9861004CDDEA /* cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88C9AF81B4A9861004CDDEA /* cell.swift */; };
 		C88C9AFB1B4A9861004CDDEA /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88C9AF91B4A9861004CDDEA /* FeedTableViewController.swift */; };
 /* End PBXBuildFile section */
@@ -44,9 +47,12 @@
 		81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		81BA81801A49E10C00E65899 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		81BA81821A49E27F00E65899 /* ParseStarterProject-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ParseStarterProject-Bridging-Header.h"; sourceTree = "<group>"; };
+		9749CB5A1D2150EA00DD4278 /* message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = message.swift; sourceTree = "<group>"; };
+		9749CB5C1D2150F700DD4278 /* comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = comment.swift; sourceTree = "<group>"; };
+		9749CB5E1D21758300DD4278 /* TableSectionFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableSectionFooter.swift; sourceTree = "<group>"; };
+		9749CB601D2175C000DD4278 /* Footer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Footer.xib; sourceTree = "<group>"; };
 		97B10CCF1D1C7EC800CC6943 /* CommentsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsTableViewController.swift; sourceTree = "<group>"; };
 		97D186191D19A50300D4E505 /* newMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = newMessageCell.swift; sourceTree = "<group>"; };
-		C88C9AF41B4A95FA004CDDEA /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		C88C9AF81B4A9861004CDDEA /* cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cell.swift; sourceTree = "<group>"; };
 		C88C9AF91B4A9861004CDDEA /* FeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -93,6 +99,8 @@
 			children = (
 				81BA814A1A49DA1800E65899 /* AppDelegate.swift */,
 				81BA814E1A49DA1800E65899 /* Main.storyboard */,
+				9749CB5E1D21758300DD4278 /* TableSectionFooter.swift */,
+				9749CB601D2175C000DD4278 /* Footer.xib */,
 				9749CB581D214FC000DD4278 /* Cells */,
 				9749CB591D214FCF00DD4278 /* ViewControllers */,
 				81BA81511A49DA1800E65899 /* Images.xcassets */,
@@ -139,6 +147,8 @@
 			children = (
 				97D186191D19A50300D4E505 /* newMessageCell.swift */,
 				C88C9AF81B4A9861004CDDEA /* cell.swift */,
+				9749CB5A1D2150EA00DD4278 /* message.swift */,
+				9749CB5C1D2150F700DD4278 /* comment.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -148,7 +158,6 @@
 			children = (
 				81BA814C1A49DA1800E65899 /* ViewController.swift */,
 				97B10CCF1D1C7EC800CC6943 /* CommentsTableViewController.swift */,
-				C88C9AF41B4A95FA004CDDEA /* TableViewController.swift */,
 				C88C9AF91B4A9861004CDDEA /* FeedTableViewController.swift */,
 			);
 			name = ViewControllers;
@@ -214,6 +223,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9749CB611D2175C000DD4278 /* Footer.xib in Resources */,
 				81BA81501A49DA1800E65899 /* Main.storyboard in Resources */,
 				81BA81521A49DA1800E65899 /* Images.xcassets in Resources */,
 			);
@@ -243,11 +253,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9749CB5F1D21758300DD4278 /* TableSectionFooter.swift in Sources */,
+				9749CB5B1D2150EA00DD4278 /* message.swift in Sources */,
 				97B10CD01D1C7EC800CC6943 /* CommentsTableViewController.swift in Sources */,
 				97D1861A1D19A50300D4E505 /* newMessageCell.swift in Sources */,
+				9749CB5D1D2150F700DD4278 /* comment.swift in Sources */,
 				C88C9AFB1B4A9861004CDDEA /* FeedTableViewController.swift in Sources */,
 				81BA814D1A49DA1800E65899 /* ViewController.swift in Sources */,
-				C88C9AF51B4A95FA004CDDEA /* TableViewController.swift in Sources */,
 				C88C9AFA1B4A9861004CDDEA /* cell.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
 			);

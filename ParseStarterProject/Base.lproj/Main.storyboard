@@ -285,13 +285,88 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Q3p-lP-6Bs">
-                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
+                            <tableViewCell autoresizesSubviews="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="message" rowHeight="107" id="Q3p-lP-6Bs" customClass="message" customModule="ParseStarterProject" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="375" height="107"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Q3p-lP-6Bs" id="Ndm-27-L65">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="106.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="woY-qO-d4X">
+                                            <rect key="frame" x="8" y="0.0" width="53" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="53" id="x2v-6r-VBu"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mj6-Ch-9j8">
+                                            <rect key="frame" x="8" y="26" width="359" height="48"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MCF-0G-sdR">
+                                            <rect key="frame" x="272" y="0.0" width="95" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="95" id="2GN-5i-mzl"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="mj6-Ch-9j8" firstAttribute="top" secondItem="woY-qO-d4X" secondAttribute="bottom" constant="5" id="JY1-Ae-nrN"/>
+                                        <constraint firstItem="woY-qO-d4X" firstAttribute="leading" secondItem="Ndm-27-L65" secondAttribute="leadingMargin" id="PAs-P8-Toq"/>
+                                        <constraint firstItem="woY-qO-d4X" firstAttribute="top" secondItem="MCF-0G-sdR" secondAttribute="top" id="RTa-Gu-KYT"/>
+                                        <constraint firstItem="woY-qO-d4X" firstAttribute="top" secondItem="Ndm-27-L65" secondAttribute="top" id="RfK-y6-CAH"/>
+                                        <constraint firstItem="woY-qO-d4X" firstAttribute="bottom" secondItem="MCF-0G-sdR" secondAttribute="bottom" id="YNb-4k-Mio"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="mj6-Ch-9j8" secondAttribute="bottom" constant="-8.5" id="b7c-rC-5bJ"/>
+                                        <constraint firstItem="MCF-0G-sdR" firstAttribute="trailing" secondItem="mj6-Ch-9j8" secondAttribute="trailing" id="knK-cR-CaH"/>
+                                        <constraint firstItem="woY-qO-d4X" firstAttribute="leading" secondItem="mj6-Ch-9j8" secondAttribute="leading" id="xfl-un-ucv"/>
+                                        <constraint firstItem="MCF-0G-sdR" firstAttribute="trailing" secondItem="Ndm-27-L65" secondAttribute="trailingMargin" id="zXj-Kg-Yv8"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="originalMessage" destination="mj6-Ch-9j8" id="yfy-VR-9mn"/>
+                                    <outlet property="time" destination="MCF-0G-sdR" id="AYo-qa-95y"/>
+                                    <outlet property="user" destination="woY-qO-d4X" id="HRu-as-YR9"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell autoresizesSubviews="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="comment" rowHeight="70" id="Vkg-1I-D0x" customClass="comment" customModule="ParseStarterProject" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="199" width="375" height="70"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vkg-1I-D0x" id="qcF-cQ-uo6">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ia-TM-btc">
+                                            <rect key="frame" x="8" y="8" width="57" height="21"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nov-fz-r3d">
+                                            <rect key="frame" x="8" y="37" width="359" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xJr-t6-t4c">
+                                            <rect key="frame" x="300" y="8" width="67" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="User" destination="1ia-TM-btc" id="Vig-Wg-z7g"/>
+                                    <outlet property="comment" destination="nov-fz-r3d" id="U7H-I2-Z0S"/>
+                                    <outlet property="time" destination="xJr-t6-t4c" id="K0d-6W-s3Q"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -300,7 +375,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
-                        <barButtonItem title="New Comment" id="qra-Wo-mVj">
+                        <barButtonItem id="qra-Wo-mVj">
                             <connections>
                                 <action selector="newComment:" destination="MOb-hB-OQI" id="IVr-dI-drd"/>
                             </connections>
