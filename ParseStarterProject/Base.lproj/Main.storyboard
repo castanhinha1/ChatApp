@@ -80,6 +80,13 @@
                                     <action selector="logIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JGg-H6-BWk"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nxe-a8-GQU">
+                                <rect key="frame" x="85" y="334" width="204" height="46"/>
+                                <state key="normal" title="Button" image="facebook.png"/>
+                                <connections>
+                                    <action selector="facebookLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vUq-jx-oNg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -100,12 +107,15 @@
                             <constraint firstItem="Ml4-7V-aMi" firstAttribute="baseline" secondItem="F4a-K2-fi0" secondAttribute="baseline" id="afM-b7-fG2"/>
                             <constraint firstItem="F4a-K2-fi0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="69" id="ala-nK-uuc"/>
                             <constraint firstItem="ITD-Gt-qZ1" firstAttribute="centerX" secondItem="vA6-zB-eVz" secondAttribute="centerX" id="byE-wi-xlI"/>
+                            <constraint firstItem="Nxe-a8-GQU" firstAttribute="centerX" secondItem="350-7f-s6A" secondAttribute="centerX" id="dFV-Cp-48t"/>
                             <constraint firstItem="Ml4-7V-aMi" firstAttribute="top" secondItem="vA6-zB-eVz" secondAttribute="bottom" constant="52" id="hvF-2l-lxa"/>
+                            <constraint firstItem="Nxe-a8-GQU" firstAttribute="leading" secondItem="F4a-K2-fi0" secondAttribute="leading" id="j63-bU-tqq"/>
                             <constraint firstItem="NdI-JE-gh0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="43" id="jjT-gK-5zR"/>
                             <constraint firstItem="ITD-Gt-qZ1" firstAttribute="centerX" secondItem="350-7f-s6A" secondAttribute="centerX" id="kJc-lL-aDb"/>
                             <constraint firstItem="vA6-zB-eVz" firstAttribute="leading" secondItem="e5q-fP-PFy" secondAttribute="leading" id="mRg-Ts-sF0"/>
                             <constraint firstItem="oDg-l1-o4T" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nIL-PB-QzS"/>
                             <constraint firstItem="e5q-fP-PFy" firstAttribute="top" secondItem="NdI-JE-gh0" secondAttribute="bottom" constant="28" id="owE-e7-oGD"/>
+                            <constraint firstItem="Nxe-a8-GQU" firstAttribute="top" secondItem="Ml4-7V-aMi" secondAttribute="bottom" constant="18" id="pyt-1Z-Z07"/>
                             <constraint firstItem="F4a-K2-fi0" firstAttribute="top" secondItem="350-7f-s6A" secondAttribute="top" id="rcY-gi-vfv"/>
                             <constraint firstItem="Ml4-7V-aMi" firstAttribute="centerY" secondItem="F4a-K2-fi0" secondAttribute="centerY" id="sQn-Me-x3s"/>
                             <constraint firstItem="ITD-Gt-qZ1" firstAttribute="top" secondItem="vA6-zB-eVz" secondAttribute="bottom" constant="18" id="sXN-Kd-ATc"/>
@@ -201,7 +211,7 @@
                                                 <constraint firstAttribute="width" constant="100" id="o5s-bA-Ehw"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -298,13 +308,13 @@
                                                 <constraint firstAttribute="width" constant="53" id="x2v-6r-VBu"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mj6-Ch-9j8">
                                             <rect key="frame" x="8" y="26" width="359" height="48"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MCF-0G-sdR">
@@ -313,7 +323,7 @@
                                                 <constraint firstAttribute="width" constant="95" id="2GN-5i-mzl"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -345,19 +355,19 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ia-TM-btc">
                                             <rect key="frame" x="8" y="8" width="57" height="21"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nov-fz-r3d">
                                             <rect key="frame" x="8" y="37" width="359" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xJr-t6-t4c">
                                             <rect key="frame" x="300" y="8" width="67" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -413,4 +423,7 @@
             <point key="canvasLocation" x="1070.5" y="289.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="facebook.png" width="202" height="46"/>
+    </resources>
 </document>

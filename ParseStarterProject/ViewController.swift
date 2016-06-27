@@ -1,5 +1,8 @@
 import UIKit
 import Parse
+import FBSDKCoreKit
+import FBSDKLoginKit
+import ParseFacebookUtilsV4
 
 class ViewController: UIViewController {
     
@@ -152,10 +155,13 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        FBSDKProfile.enableUpdatesOnAccessTokenChange(true)
 
         self.hideKeyboardWhenTappedAround()
         
-           }
+        
+    }
     
     override func viewDidAppear(animated: Bool) {
         
@@ -167,7 +173,49 @@ class ViewController: UIViewController {
             
         }
         
+        if FBSDKProfile.currentProfile() != nil {
+            
+            self.performSegueWithIdentifier("login", sender: self)
+            
+            print(FBSDKProfile.currentProfile().firstName)
+            
+            
+        }
+        
     }
+    
+    @IBAction func facebookLogin(sender: AnyObject) {
+        
+        let permissions = ["public_profile"]
+        
+        
+        PFFacebookUtils.logInInBackgroundWithReadPermissions(permissions, block: {
+            
+            (user: PFUser?, error: NSError?) -> Void in
+            
+            if let error = error {
+                
+                print(error)
+                
+            } else {
+                
+                if let user = user {
+                    
+                    self.performSegueWithIdentifier("login", sender: self)
+                    
+                    
+                }
+                
+                
+                
+            }
+            
+            
+            
+        })
+        
+    }
+    
     
 
     override func didReceiveMemoryWarning() {

@@ -2,6 +2,9 @@ import UIKit
 
 import Bolts
 import Parse
+import FBSDKCoreKit
+import FBSDKLoginKit
+import ParseFacebookUtilsV4
 
 // If you want to use any of the UI components, uncomment this line
 // import ParseUI
@@ -28,6 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         Parse.initializeWithConfiguration(configuration)
         
+        FBSDKProfile.enableUpdatesOnAccessTokenChange(true)
+        
         PFUser.enableAutomaticUser()
         
         let defaultACL = PFACL();
@@ -51,10 +56,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
-        
-        
-        return true
+        PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
+        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
+    }
+    
+    func applicationDidBecomeActive(application: UIApplication) {
+        FBSDKAppEvents.activateApp()
+    }
+    
+    
 
     //--------------------------------------
     // MARK: Push Notifications
