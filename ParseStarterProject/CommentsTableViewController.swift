@@ -138,7 +138,7 @@ class CommentsTableViewController: UITableViewController {
             
             commentCell.comment.text = messages[indexPath.row-1]
             commentCell.User.text = commentSender[indexPath.row-1]
-            commentCell.time.text = "12"
+            commentCell.time.text = "12:30"
             
             return commentCell
             
