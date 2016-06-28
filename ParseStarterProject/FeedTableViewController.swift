@@ -2,6 +2,7 @@
 
 import UIKit
 import Parse
+import FBSDKLoginKit
 
 class FeedTableViewController: UITableViewController, UITextFieldDelegate {
     
@@ -33,7 +34,7 @@ class FeedTableViewController: UITableViewController, UITextFieldDelegate {
     @IBAction func homeButton(sender: UIBarButtonItem) {
         
         //Move to home
-        print("homebutton pressed")
+        print(PFUser.currentUser()?.objectId)
         
     }
     
@@ -120,6 +121,7 @@ class FeedTableViewController: UITableViewController, UITextFieldDelegate {
         
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -139,7 +141,7 @@ class FeedTableViewController: UITableViewController, UITextFieldDelegate {
                     
                     if let user = object as? PFUser {
                         
-                        self.users[user.objectId!] = user.username!
+                        self.users[user.objectId!] = user["firstName"]! as! String
                         
                     }
                 }
@@ -150,13 +152,13 @@ class FeedTableViewController: UITableViewController, UITextFieldDelegate {
         getFeed(false)
         
         self.refreshControl?.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
+        
     }
     
     
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-
         
     }
     
@@ -172,6 +174,8 @@ class FeedTableViewController: UITableViewController, UITextFieldDelegate {
     
     @IBAction func signOut(sender: UIBarButtonItem) {
         
+        let loginManager = FBSDKLoginManager()
+        loginManager.logOut()
         PFUser.logOut()
         let Login = storyboard!.instantiateViewControllerWithIdentifier("ViewController")
         self.presentViewController(Login, animated: true, completion: nil)
@@ -241,7 +245,7 @@ class FeedTableViewController: UITableViewController, UITextFieldDelegate {
                         
                         if let user = object as? PFUser {
                             
-                            self.users[user.objectId!] = user.username!
+                            self.users[user.objectId!] = user["firstName"]! as! String
                         }
                     }
                 }

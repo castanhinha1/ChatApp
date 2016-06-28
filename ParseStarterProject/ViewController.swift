@@ -177,7 +177,7 @@ class ViewController: UIViewController {
             
             self.performSegueWithIdentifier("login", sender: self)
             
-            print(FBSDKProfile.currentProfile().firstName)
+            //print(FBSDKProfile.currentProfile().firstName)
             
             
         }
@@ -199,7 +199,25 @@ class ViewController: UIViewController {
                 
             } else {
                 
-                if let user = user {
+                if user != nil {
+                    
+                    var currentUser = PFUser.currentUser()
+                    var firstName = FBSDKProfile.currentProfile().firstName
+                    currentUser?.setObject(firstName, forKey: "firstName")
+                    currentUser?.saveInBackgroundWithBlock({ (success, error) in
+                        
+                        if error != nil {
+                            
+                            print("user not updated")
+                            
+                        } else {
+                            
+                            print("user updated")
+                            
+                        }
+                        
+                    })
+
                     
                     self.performSegueWithIdentifier("login", sender: self)
                     
@@ -215,6 +233,8 @@ class ViewController: UIViewController {
         })
         
     }
+    
+
     
     
 

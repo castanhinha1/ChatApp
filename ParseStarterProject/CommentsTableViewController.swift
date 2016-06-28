@@ -146,14 +146,6 @@ class CommentsTableViewController: UITableViewController {
         
     }
     
-    override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let footerCell = tableView.dequeueReusableCellWithIdentifier("TableSectionFooter") as! TableSectionFooter
-        footerCell.backgroundColor = UIColor.cyanColor()
-        
-        
-        return footerCell
-    }
-    
     
 
 }
