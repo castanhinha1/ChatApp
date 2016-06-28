@@ -4,7 +4,7 @@ import UIKit
 import Parse
 import FBSDKLoginKit
 
-class FeedTableViewController: UITableViewController, UITextFieldDelegate {
+class FeedTableViewController: UITableViewController, UITextFieldDelegate, UITextViewDelegate {
     
     var messageID = [String]()
     var messages = [String]()
@@ -471,6 +471,8 @@ class FeedTableViewController: UITableViewController, UITextFieldDelegate {
     
     func textFieldDidBeginEditing(textField: UITextField) {
         
+        textField.returnKeyType = UIReturnKeyType.Send
+        
         tableView.allowsSelection = false
         
     }
@@ -486,6 +488,7 @@ class FeedTableViewController: UITableViewController, UITextFieldDelegate {
      */
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        sendNewMessage(self)
         return true
     }
     
