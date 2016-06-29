@@ -10,7 +10,7 @@ import UIKit
 import Parse
 
 
-class CommentsTableViewController: UITableViewController {
+class CommentsTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var messages = [String]()
     var commentSender = [String]()
@@ -22,6 +22,7 @@ class CommentsTableViewController: UITableViewController {
     var originalTime: String = ""
     var messageId: String?
     
+    @IBOutlet var tableView: UITableView!
     
     func loadComments() {
         
@@ -95,9 +96,6 @@ class CommentsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let nib = UINib(nibName: "TableSectionFooter", bundle: nil)
-        tableView.registerNib(nib, forHeaderFooterViewReuseIdentifier: "TableSectionFooter")
-        
         loadComments()
         
     }
@@ -109,18 +107,18 @@ class CommentsTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return messages.count+1
     }
-
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
         if indexPath.row == 0 {
             

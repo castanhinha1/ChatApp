@@ -10,6 +10,7 @@ import UIKit
 
 class message: UITableViewCell {
 
+    /*
     
     @IBOutlet weak var user: UILabel!
     
@@ -17,4 +18,11 @@ class message: UITableViewCell {
     
     @IBOutlet weak var time: UILabel!
     
+ */
+    @IBOutlet weak var user: UILabel!
+    
+    @IBOutlet weak var originalMessage: UILabel!
+    
+    @IBOutlet weak var time: UILabel!
+ 
 }
