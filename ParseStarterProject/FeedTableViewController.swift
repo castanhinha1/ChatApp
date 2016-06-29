@@ -3,6 +3,7 @@
 import UIKit
 import Parse
 import FBSDKLoginKit
+import GoogleMaps
 
 class FeedTableViewController: UITableViewController, UITextFieldDelegate, UITextViewDelegate {
     
@@ -16,6 +17,8 @@ class FeedTableViewController: UITableViewController, UITextFieldDelegate, UITex
     
     var refresher: UIRefreshControl!
     var activityIndicator = UIActivityIndicatorView()
+    var placesClient: GMSPlacesClient?
+    var possiblePlaces: [String] = []
     
     @IBAction func composeMessage(sender: UIBarButtonItem) {
 
@@ -27,6 +30,42 @@ class FeedTableViewController: UITableViewController, UITextFieldDelegate, UITex
         
         //Move to settings Page
         print("settings button pressed")
+        
+        //possiblePlaces = ["bar", "amusement_park", "bakery", "book_store", "cafe", "casino", "gym", "movie_theater", "night_club", "park", "restaurant", "shopping_mall", "stadium", "university"]
+        
+        possiblePlaces = ["atm"]
+
+        placesClient!.currentPlaceWithCallback({ (placeLikelihoods, error) -> Void in
+            if error != nil {
+                print("Current Place error: \(error!.localizedDescription)")
+                return
+            }
+            
+            for likelihood in placeLikelihoods!.likelihoods {
+                if let likelihood = likelihood as? GMSPlaceLikelihood {
+                    let place = likelihood.place
+                    
+                    for y in place.types {
+                        for z in self.possiblePlaces {
+                            if y == z {
+                                
+                                print("Current Place name \(place.name) at likelihood \(likelihood.likelihood)")
+                                print("Current Place address \(place.formattedAddress)")
+                                print(place.types)
+                                
+                            }
+                            else {
+                                print("no matches")
+                            }
+                        }
+                    }
+                    
+                    
+                    
+
+                }
+            }
+        })
         
         
     }
@@ -125,17 +164,19 @@ class FeedTableViewController: UITableViewController, UITextFieldDelegate, UITex
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        placesClient = GMSPlacesClient()
+        
         let query = PFUser.query()
         
         query?.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
             
             if let users = objects {
                 
-                self.messageID.removeAll(keepCapacity: true)
-                self.messages.removeAll(keepCapacity: true)
-                self.users.removeAll(keepCapacity: true)
-                self.usernames.removeAll(keepCapacity: true)
-                self.time.removeAll(keepCapacity: true)
+                self.messageID.removeAll(keepCapacity: false)
+                self.messages.removeAll(keepCapacity: false)
+                self.users.removeAll(keepCapacity: false)
+                self.usernames.removeAll(keepCapacity: false)
+                self.time.removeAll(keepCapacity: false)
                 
                 for object in users {
                     
@@ -207,7 +248,16 @@ class FeedTableViewController: UITableViewController, UITextFieldDelegate, UITex
                                 self.hoursSince(object.createdAt!)
                                 self.messageID.append(object.objectId!)
                                 self.messages.append(object["message"] as! String)
+                                
+                                if self.users.isEmpty == false {
+                                
                                 self.usernames.append(self.users[object["userId"] as! String]!)
+                                
+                                } else {
+                                    
+                                    print("users doesnt have anything in it.")
+                                }
+                                
                                 self.tableView.reloadData()
                                 
                             }
@@ -235,11 +285,11 @@ class FeedTableViewController: UITableViewController, UITextFieldDelegate, UITex
                 
                 if let users = objects {
                     
-                    self.messageID.removeAll(keepCapacity: true)
-                    self.messages.removeAll(keepCapacity: true)
-                    self.users.removeAll(keepCapacity: true)
-                    self.usernames.removeAll(keepCapacity: true)
-                    self.time.removeAll(keepCapacity: true)
+                    self.messageID.removeAll(keepCapacity: false)
+                    self.messages.removeAll(keepCapacity: false)
+                    self.users.removeAll(keepCapacity: false)
+                    self.usernames.removeAll(keepCapacity: false)
+                    self.time.removeAll(keepCapacity: false)
                     
                     for object in users {
                         
@@ -500,6 +550,7 @@ class FeedTableViewController: UITableViewController, UITextFieldDelegate, UITex
         self.view.endEditing(true)
         
     }
+    
     
 }
 

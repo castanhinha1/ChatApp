@@ -5,6 +5,7 @@ import Parse
 import FBSDKCoreKit
 import FBSDKLoginKit
 import ParseFacebookUtilsV4
+import GoogleMaps
 
 // If you want to use any of the UI components, uncomment this line
 // import ParseUI
@@ -22,6 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //--------------------------------------
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        GMSServices.provideAPIKey("AIzaSyD-rMoSPBShZtXP_Why8m5AOlfcXSo9U0Q")
+        
         Parse.enableLocalDatastore()
         
         let configuration = ParseClientConfiguration {
