@@ -209,7 +209,18 @@ class FeedTableViewController: UITableViewController, UITextFieldDelegate, UITex
                                 self.hoursSince(object.createdAt!)
                                 self.messageID.append(object.objectId!)
                                 self.messages.append(object["message"] as! String)
+                                
+                                if self.users.count != 0 {
+                                
                                 self.usernames.append(self.users[object["userId"] as! String]!)
+                                    
+                                } else {
+                                    
+                                    self.getFeed(true)
+                                    
+                                    //print("error")
+                                    
+                                }
                                 self.tableView.reloadData()
                                 
                             }
@@ -443,7 +454,8 @@ class FeedTableViewController: UITableViewController, UITextFieldDelegate, UITex
         // Commments View Controller
         if segue.identifier == "showDetail" {
             
-            let vc = segue.destinationViewController as! CommentsTableViewController
+            let navController = segue.destinationViewController as! UINavigationController
+            let vc = navController.topViewController as! CommentsTableViewController
             
             vc.messageId = valueToPassMessageId
             vc.originalMessage = valueToPassMessage

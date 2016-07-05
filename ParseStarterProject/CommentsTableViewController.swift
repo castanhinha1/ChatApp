@@ -98,6 +98,9 @@ class CommentsTableViewController: UIViewController, UITableViewDelegate, UITabl
         
         loadComments()
         
+        self.tableView.rowHeight = UITableViewAutomaticDimension;
+        self.tableView.estimatedRowHeight = 44.0;
+        
     }
 
     override func didReceiveMemoryWarning() {

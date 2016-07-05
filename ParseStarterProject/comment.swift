@@ -23,8 +23,7 @@ class comment: UITableViewCell {
  
     @IBOutlet weak var User: UILabel!
     
-    @IBOutlet weak var comment: UILabel!
-    
     @IBOutlet weak var time: UILabel!
     
+    @IBOutlet var comment: UITextView!
 }
