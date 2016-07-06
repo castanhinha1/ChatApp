@@ -10,6 +10,7 @@ class FeedTableViewController: UITableViewController, UITextFieldDelegate, UITex
     var messages = [String]()
     var usernames = [String]()
     var users = [String: String]()
+    var replyCount = [Int]()
     var time = [String]()
     var newMessage: String = ""
     var messageCell: newMessageCell?
@@ -133,6 +134,9 @@ class FeedTableViewController: UITableViewController, UITextFieldDelegate, UITex
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.estimatedRowHeight = 120
+        tableView.rowHeight = UITableViewAutomaticDimension
         
         setupDropDowns()
         dropDowns.forEach { $0.dismissMode = .OnTap }

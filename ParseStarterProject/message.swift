@@ -22,7 +22,6 @@ class message: UITableViewCell {
     @IBOutlet weak var user: UILabel!
     
     @IBOutlet weak var time: UILabel!
-    
-    @IBOutlet var originalMessage: UITextView!
- 
+
+    @IBOutlet var originalMessage: UILabel!
 }

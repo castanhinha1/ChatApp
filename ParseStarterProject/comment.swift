@@ -25,5 +25,5 @@ class comment: UITableViewCell {
     
     @IBOutlet weak var time: UILabel!
     
-    @IBOutlet var comment: UITextView!
+    @IBOutlet var comment: UILabel!
 }

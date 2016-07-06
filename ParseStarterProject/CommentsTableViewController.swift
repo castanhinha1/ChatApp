@@ -45,8 +45,6 @@ class CommentsTableViewController: UIViewController, UITableViewDelegate, UITabl
                     
                     //Add Comments to Array
                     
-                    print("Success")
-                    
                     self.messages.append(object["message"] as! String)
                     
                     self.commentSender.append((PFUser.currentUser()?.objectForKey("firstName"))! as! String)
@@ -98,10 +96,10 @@ class CommentsTableViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadComments()
+        tableView.estimatedRowHeight = 89
+        tableView.rowHeight = UITableViewAutomaticDimension
         
-        self.tableView.rowHeight = UITableViewAutomaticDimension;
-        self.tableView.estimatedRowHeight = 44.0;
+        loadComments()
         
     }
 
