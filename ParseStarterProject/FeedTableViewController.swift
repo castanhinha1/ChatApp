@@ -161,6 +161,7 @@ class FeedTableViewController: UITableViewController, UITextFieldDelegate, UITex
                 self.users.removeAll(keepCapacity: true)
                 self.usernames.removeAll(keepCapacity: true)
                 self.time.removeAll(keepCapacity: true)
+                self.replyCount.removeAll(keepCapacity: true)
                 
                 for object in users {
                     
