@@ -10,7 +10,7 @@ import UIKit
 import Parse
 
 
-class CommentsTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class CommentsTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UITextViewDelegate{
     
     var messages = [String]()
     var commentSender = [String]()
@@ -23,6 +23,8 @@ class CommentsTableViewController: UIViewController, UITableViewDelegate, UITabl
     var messageId: String?
     
     @IBOutlet var tableView: UITableView!
+    
+    @IBOutlet var newComment: UITextField!
     
     func loadComments() {
         
@@ -47,7 +49,7 @@ class CommentsTableViewController: UIViewController, UITableViewDelegate, UITabl
                     
                     self.messages.append(object["message"] as! String)
                     
-                    self.commentSender.append((PFUser.currentUser()?.objectForKey("username"))! as! String)
+                    self.commentSender.append((PFUser.currentUser()?.objectForKey("firstName"))! as! String)
                     
                     self.tableView.reloadData()
                     
@@ -66,15 +68,13 @@ class CommentsTableViewController: UIViewController, UITableViewDelegate, UITabl
         
     }
     
-    @IBOutlet weak var newComment: UIBarButtonItem!
-
-    @IBAction func newComment(sender: UIBarButtonItem) {
-        
+    @IBAction func sendComment(sender: AnyObject) {
+    
         let comment = PFObject(className:"Comment")
         comment["createdBy"] = PFUser.currentUser()
         comment["messageId"] = messageId
-        comment["message"] = "this is a test"
-
+        comment["message"] = newComment.text
+        
         comment.saveInBackgroundWithBlock({ (success, error) in
             
             if error == nil {
@@ -93,6 +93,8 @@ class CommentsTableViewController: UIViewController, UITableViewDelegate, UITabl
         self.tableView.reloadData()
         
     }
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -145,6 +147,15 @@ class CommentsTableViewController: UIViewController, UITableViewDelegate, UITabl
             
         }
         
+    }
+
+    override func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
+    }
+    
+    override func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     

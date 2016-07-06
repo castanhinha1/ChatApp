@@ -320,6 +320,9 @@
                                     <constraint firstAttribute="width" constant="46" id="jHS-E5-YPO"/>
                                 </constraints>
                                 <state key="normal" title="Send"/>
+                                <connections>
+                                    <action selector="sendComment:" destination="8w3-Dd-67d" eventType="touchUpInside" id="hXF-tJ-s1z"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Zq6-CM-qQg">
                                 <rect key="frame" x="0.0" y="62" width="375" height="543"/>
@@ -372,13 +375,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="87.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ia-TM-btc">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ia-TM-btc">
                                                     <rect key="frame" x="8" y="8" width="57" height="21"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xJr-t6-t4c">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xJr-t6-t4c">
                                                     <rect key="frame" x="300" y="8" width="67" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -393,18 +396,16 @@
                                                 </textView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="xJr-t6-t4c" firstAttribute="leading" secondItem="1ia-TM-btc" secondAttribute="trailing" constant="235" id="2WW-jE-qXv"/>
-                                                <constraint firstItem="KkL-qp-jAK" firstAttribute="leading" secondItem="qcF-cQ-uo6" secondAttribute="leading" constant="8" id="Dw1-wr-t3I"/>
-                                                <constraint firstAttribute="trailing" secondItem="KkL-qp-jAK" secondAttribute="trailing" constant="8" id="EUl-Kl-oW7"/>
-                                                <constraint firstItem="1ia-TM-btc" firstAttribute="top" secondItem="qcF-cQ-uo6" secondAttribute="top" constant="8" id="Esq-D8-pX1"/>
-                                                <constraint firstAttribute="bottom" secondItem="KkL-qp-jAK" secondAttribute="bottom" constant="8" id="GjZ-oJ-Eig"/>
-                                                <constraint firstItem="xJr-t6-t4c" firstAttribute="top" secondItem="qcF-cQ-uo6" secondAttribute="top" constant="8" id="IXK-d1-dpV"/>
-                                                <constraint firstItem="KkL-qp-jAK" firstAttribute="top" secondItem="1ia-TM-btc" secondAttribute="bottom" constant="1" id="JsG-rI-66z"/>
-                                                <constraint firstItem="1ia-TM-btc" firstAttribute="leading" secondItem="qcF-cQ-uo6" secondAttribute="leading" constant="8" id="Tnh-MB-rXP"/>
-                                                <constraint firstItem="KkL-qp-jAK" firstAttribute="top" secondItem="xJr-t6-t4c" secondAttribute="bottom" constant="1" id="We8-7p-PZY"/>
-                                                <constraint firstAttribute="trailing" secondItem="xJr-t6-t4c" secondAttribute="trailing" constant="8" id="jyT-OC-lK4"/>
-                                                <constraint firstItem="KkL-qp-jAK" firstAttribute="top" secondItem="xJr-t6-t4c" secondAttribute="bottom" constant="1" id="qyk-51-AFw"/>
-                                                <constraint firstItem="xJr-t6-t4c" firstAttribute="leading" secondItem="1ia-TM-btc" secondAttribute="trailing" constant="235" id="xb4-0b-GTc"/>
+                                                <constraint firstItem="1ia-TM-btc" firstAttribute="top" secondItem="qcF-cQ-uo6" secondAttribute="top" constant="8" id="6YC-n1-v3E"/>
+                                                <constraint firstItem="KkL-qp-jAK" firstAttribute="top" secondItem="xJr-t6-t4c" secondAttribute="bottom" constant="1" id="8rE-8w-2UA"/>
+                                                <constraint firstItem="KkL-qp-jAK" firstAttribute="top" secondItem="xJr-t6-t4c" secondAttribute="bottom" constant="1" id="EBF-wN-bhg"/>
+                                                <constraint firstItem="KkL-qp-jAK" firstAttribute="top" secondItem="1ia-TM-btc" secondAttribute="bottom" constant="1" id="Nb2-iG-0Rg"/>
+                                                <constraint firstAttribute="trailing" secondItem="KkL-qp-jAK" secondAttribute="trailing" constant="8" id="ZkV-Es-YwS"/>
+                                                <constraint firstAttribute="bottom" secondItem="KkL-qp-jAK" secondAttribute="bottom" constant="8" id="kva-b1-9As"/>
+                                                <constraint firstItem="1ia-TM-btc" firstAttribute="leading" secondItem="qcF-cQ-uo6" secondAttribute="leading" constant="8" id="nt6-wH-lf8"/>
+                                                <constraint firstAttribute="trailing" secondItem="xJr-t6-t4c" secondAttribute="trailing" constant="8" id="o6y-Kf-98s"/>
+                                                <constraint firstItem="xJr-t6-t4c" firstAttribute="top" secondItem="qcF-cQ-uo6" secondAttribute="top" constant="8" id="oFh-xh-G4k"/>
+                                                <constraint firstItem="KkL-qp-jAK" firstAttribute="leading" secondItem="qcF-cQ-uo6" secondAttribute="leading" constant="8" id="rKT-Jk-MOu"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -449,6 +450,7 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="newComment" destination="a8G-c1-i0I" id="JsL-es-9p9"/>
                         <outlet property="tableView" destination="Zq6-CM-qQg" id="TPt-zJ-bRE"/>
                     </connections>
                 </viewController>
