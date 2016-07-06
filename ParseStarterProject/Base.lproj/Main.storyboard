@@ -441,7 +441,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="N4I-kc-Xik">
-                        <barButtonItem key="leftBarButtonItem" title="Back" style="done" id="1Iq-H4-BJm">
+                        <barButtonItem key="leftBarButtonItem" title="Back" style="plain" id="1Iq-H4-BJm">
                             <connections>
                                 <segue destination="0zI-2v-jFG" kind="show" id="oyg-HM-hI2"/>
                             </connections>

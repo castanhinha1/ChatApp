@@ -24,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Parse.enableLocalDatastore()
         
+        DropDown.startListeningToKeyboard()
+        
         let configuration = ParseClientConfiguration {
             $0.applicationId = "vBoGwln0iFEyIzEMyInXH3GIIuNMBM1CDkdM2UnL"
             $0.clientKey = "CyjkO5ZF4CiZONHthZkbOBtfkA9OV1zJp6zJGZfs"
